@@ -110,3 +110,111 @@ Chapter: Name: dsa
 Коллекция пустая!
 ]
 2021-04-27 00:42:09,699 INFO s.ServerReceiver [Thread-0] Получен запрос от /127.0.0.1:56547
+2021-04-27 13:17:43,226 ERROR s.Server [main] Ошибка на сервере
+2021-04-27 13:17:48,308 INFO s.ServerReceiver [Thread-0] Получен запрос от /127.0.0.1:59761
+2021-04-27 13:18:26,689 INFO s.ServerReceiver [Thread-0] Получен запрос от /127.0.0.1:59775
+2021-04-27 13:18:26,776 INFO s.ServerSender [Thread-0] Отправка ответа клиенту /127.0.0.1:59775
+[
+Коллекция успешно загружена! 
+Введите help для отображения списка доступных команд
+]
+2021-04-27 13:18:47,862 INFO s.ServerReceiver [Thread-0] Получен запрос от /127.0.0.1:59775
+2021-04-27 13:18:47,877 INFO s.ServerSender [Thread-0] Отправка ответа клиенту /127.0.0.1:59775
+[
+key: 0
+id №1
+Name: asda
+Coordinates: X: 36.3
+			 Y: 56.2
+creationDate: Mon Mar 01 15:12:43 ALMT 2021
+Health: 313.0
+Heart Count: 1
+Height: 2.0
+Category: SCOUT
+Chapter: Name: dasdada
+	     World: sdaasaaaa
+
+
+key: 1
+id №213912
+Name: DamiR
+Coordinates: X: 36.3
+			 Y: 56.2
+creationDate: Tue Feb 23 14:42:44 ALMT 2021
+Health: 5555.2
+Heart Count: 1
+Height: 5321.0
+Category: SCOUT
+Chapter: Name: Attack of the Clones
+	     World: Naboo
+
+
+key: 2
+id №12312
+Name: Apppaaa
+Coordinates: X: 10.4
+			 Y: 10.1
+creationDate: Sat Aug 14 19:23:32 ALMT 2021
+Health: 1999.2
+Heart Count: 3
+Height: 3200.0
+Category: CHAPLAIN
+Chapter: Name: Revenge of the Sith
+	     World: Kashyyyk
+
+
+key: 28083
+id №81966
+Name: ksadm
+Coordinates: X: 12.0
+			 Y: 1.0
+creationDate: Mon Mar 01 15:11:12 ALMT 2021
+Health: 2.0
+Heart Count: 2
+Height: 2.0
+Category: SCOUT
+Chapter: Name: das
+	     World: das
+
+
+key: 39864
+id №11
+Name: NOVIY
+Coordinates: X: 12.0
+			 Y: 1.0
+creationDate: Mon Mar 01 15:16:52 ALMT 2021
+Health: 1.0
+Heart Count: 1
+Height: 1.0
+Category: DREADNOUGHT
+Chapter: Name: dsa
+	     World: das
+
+
+key: 51905
+id №121
+Name: sad
+Coordinates: X: 1.0
+			 Y: 2.0
+creationDate: Mon Mar 01 15:10:48 ALMT 2021
+Health: 2.0
+Heart Count: 3
+Height: 312.0
+Category: SCOUT
+Chapter: Name: sad
+	     World: das
+
+
+
+]
+2021-04-27 13:18:51,904 INFO s.ServerReceiver [Thread-0] Получен запрос от /127.0.0.1:59775
+2021-04-27 13:18:51,904 INFO s.ServerSender [Thread-0] Отправка ответа клиенту /127.0.0.1:59775
+[
+Информация о коллекции:
+Тип коллекции: java.util.TreeMap
+Количество элементов в коллекции: 6
+Дата последней инициализации: Tue Apr 27 13:18:26 ALMT 2021
+Дата последнего сохранения: Сохранения еще не было.
+Путь до json файла: C:\Users\User\Desktop\Лабораторные работы\Программирование\ballab6\test\text.json
+]
+2021-04-27 13:19:10,059 INFO e.ServerReader [main] Завершение работы сервера!

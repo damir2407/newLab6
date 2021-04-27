@@ -34,10 +34,10 @@ public class Transform implements Transformer {
     }
 
     @Override
-    public Map<Integer, SpaceMarine> convertFromJson() {
-        Map<Integer, SpaceMarine> marines = null;
+    public NavigableMap<Integer, SpaceMarine> convertFromJson() {
+        NavigableMap<Integer, SpaceMarine> marines = null;
         try {
-            marines = gson.fromJson(fileManager.load(), new TypeToken<Map<Integer, SpaceMarine>>() {
+            marines = gson.fromJson(fileManager.load(), new TypeToken<NavigableMap<Integer, SpaceMarine>>() {
             }.getType());
             if (marines == null) throw new NoSuchElementException();
 
@@ -48,16 +48,16 @@ public class Transform implements Transformer {
                 marines.clear();
             }
         } catch (JsonSyntaxException | NumberFormatException exception) {
-            serverSender.send(new Answer().error(messenger.jsonSyntaxMessage()),inetAddress, port);
+            serverSender.send(new Answer().error(messenger.jsonSyntaxMessage()), inetAddress, port);
             return null;
         } catch (NoSuchElementException e) {
-            serverSender.send(new Answer().error(messenger.noSuchElementInFileMessage()),inetAddress, port);
+            serverSender.send(new Answer().error(messenger.noSuchElementInFileMessage()), inetAddress, port);
             return null;
         } catch (FileNotFoundException | NullPointerException exception) {
-            serverSender.send(new Answer().error(messenger.fileNotFoundMessage()),inetAddress, port);
+            serverSender.send(new Answer().error(messenger.fileNotFoundMessage()), inetAddress, port);
             return null;
         } catch (SecurityException e) {
-            serverSender.send(new Answer().error(messenger.securityErrorMessage()),inetAddress, port);
+            serverSender.send(new Answer().error(messenger.securityErrorMessage()), inetAddress, port);
             return null;
         }
         return marines;

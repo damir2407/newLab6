@@ -3,7 +3,7 @@ package collection_works;
 import data.SpaceMarine;
 
 import java.util.Date;
-import java.util.Map;
+import java.util.NavigableMap;
 
 
 /**
@@ -59,5 +59,5 @@ public interface CollectionKeeper {
 
     boolean replaceIfLowe(Integer key, SpaceMarine marine) ;
 
-    Map<Integer, SpaceMarine> getMarinesCollection() ;
+    NavigableMap<Integer, SpaceMarine> getMarinesCollection() ;
 }

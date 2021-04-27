@@ -7,6 +7,7 @@ import server_validate.ResultKeeper;
 
 import java.util.Date;
 import java.util.Map;
+import java.util.NavigableMap;
 
 /**
  * interface for FieldsValidation to validate fields
@@ -16,21 +17,13 @@ public interface ClientValidator {
 
     ResultKeeper finalCheckName(String name);
 
-    ResultKeeper finalCheckCreationDate(Date date);
-
     ResultKeeper finalCheckHealth(String health);
-
-    ResultKeeper finalCheckId(Integer id);
-
-    ResultKeeper finalCheckIdUniqueness(Map<Integer, SpaceMarine> collection);
 
     ResultKeeper finalCheckHeartCount(String heartCount);
 
     ResultKeeper finalCheckHeight(String height);
 
     ResultKeeper finalCheckCategory(String category);
-
-    ResultKeeper finalCheckCoordinates(Coordinates coordinates);
 
     ResultKeeper finalCheckX(String x);
 
@@ -40,7 +33,6 @@ public interface ClientValidator {
 
     ResultKeeper finalCheckChapterWorld(String chapterWorld);
 
-    ResultKeeper finalCheckChapter(Chapter chapter);
 
 
 }

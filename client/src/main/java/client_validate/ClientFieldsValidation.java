@@ -12,6 +12,7 @@ import server_validate.ResultKeeper;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NavigableMap;
 
 /**
  * class for check marine's fields
@@ -25,15 +26,7 @@ public class ClientFieldsValidation implements ClientValidator {
         this.messenger = messenger;
     }
 
-    /**
-     * @param coordinates to check
-     * @return coordinates
-     */
-    @Override
-    public ResultKeeper finalCheckCoordinates(Coordinates coordinates) {
-        if (coordinates == null) return new Result().error(messenger.incorrectCoordinatesMessage());
-        return new Result().ok(coordinates);
-    }
+
 
     /**
      * @param x to check
@@ -95,14 +88,6 @@ public class ClientFieldsValidation implements ClientValidator {
      * @param chapter to check
      * @return chapter
      */
-    @Override
-    public ResultKeeper finalCheckChapter(Chapter chapter) {
-        try {
-        } catch (NullPointerException e) {
-            chapter = null;
-        }
-        return new Result().ok(chapter);
-    }
 
     /**
      * @param name to check
@@ -119,12 +104,6 @@ public class ClientFieldsValidation implements ClientValidator {
      * @param date to check
      * @return date
      */
-    @Override
-    public ResultKeeper finalCheckCreationDate(Date date) {
-        if (date == null)
-            return new Result().error(messenger.incorrectCreationDateMessage());
-        return new Result().ok(date);
-    }
 
     /**
      * @param health to check
@@ -143,32 +122,7 @@ public class ClientFieldsValidation implements ClientValidator {
         return new Result().ok(newHealth);
     }
 
-    /**
-     * @param id to check
-     * @return id
-     */
-    @Override
-    public ResultKeeper finalCheckId(Integer id) {
-        if (id == null || id <= 0)
-            return new Result().error(messenger.incorrectIdMessage());
-        return new Result().ok(id);
-    }
 
-    /**
-     * @param collection to check
-     * @return collection
-     */
-    @Override
-    public ResultKeeper finalCheckIdUniqueness(Map<Integer, SpaceMarine> collection) {
-        HashMap<Integer, Boolean> finalMap = new HashMap<>();
-        for (Integer i : collection.keySet()) {
-            finalMap.put(collection.get(i).getId(), false);
-        }
-        if (finalMap.size() != collection.size()) {
-            return new Result().error(messenger.incorrectIdUniquenessMessage());
-        }
-        return new Result().ok(collection);
-    }
 
     /**
      * @param heartCount to check

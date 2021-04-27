@@ -14,7 +14,7 @@ import java.util.stream.Stream;
  * Class for working with our collection.
  */
 public class CollectionManager implements CollectionKeeper {
-    private Map<Integer, SpaceMarine> marinesCollection;
+    private NavigableMap<Integer, SpaceMarine> marinesCollection;
     private FileKeeper fileManager;
     private Date lastSave;
     private Date lastInitialization;
@@ -24,13 +24,13 @@ public class CollectionManager implements CollectionKeeper {
     public CollectionManager(FileKeeper fileManager, Transformer transform) {
         this.fileManager = fileManager;
         this.transform = transform;
-        marinesCollection = new HashMap<>();
+        marinesCollection = new TreeMap<>();
     }
 
     @Override
     public void convertToCollection() {
         marinesCollection = transform.convertFromJson();
-        if (marinesCollection == null) marinesCollection = new HashMap<>();
+        if (marinesCollection == null) marinesCollection = new TreeMap<>();
         lastInitialization = new Date();
     }
 
@@ -101,7 +101,7 @@ public class CollectionManager implements CollectionKeeper {
 
         Map.Entry<Integer, SpaceMarine> spaceMarineEntry = new AbstractMap.SimpleEntry<>(key, spaceMarine);
         marinesCollection = Stream.concat(marinesCollection.entrySet().stream(), Stream.of(spaceMarineEntry))
-                .collect(Collectors.toMap(k -> k.getKey(), v -> v.getValue(), (k, v) -> v, HashMap::new));
+                .collect(Collectors.toMap(k -> k.getKey(), v -> v.getValue(), (k, v) -> v, TreeMap::new));
     }
 
     /**
@@ -122,7 +122,7 @@ public class CollectionManager implements CollectionKeeper {
         marinesCollection = marinesCollection.entrySet()
                 .stream()
                 .filter(x -> !x.getKey().equals(key))
-                .collect(Collectors.toMap(x -> x.getKey(), y -> y.getValue(), (x, y) -> y, HashMap::new));
+                .collect(Collectors.toMap(x -> x.getKey(), y -> y.getValue(), (x, y) -> y, TreeMap::new));
     }
 
     /**
@@ -157,7 +157,7 @@ public class CollectionManager implements CollectionKeeper {
         marinesCollection = marinesCollection.entrySet()
                 .stream()
                 .filter(x -> x.getKey() > key)
-                .collect(Collectors.toMap(x -> x.getKey(), y -> y.getValue(), (x, y) -> y, HashMap::new));
+                .collect(Collectors.toMap(x -> x.getKey(), y -> y.getValue(), (x, y) -> y, TreeMap::new));
         return k;
     }
 
@@ -273,7 +273,7 @@ public class CollectionManager implements CollectionKeeper {
 
         marinesCollection = list
                 .stream()
-                .collect(Collectors.toMap(x -> getKeyByMarine(x), x -> x, (x, y) -> y, HashMap::new));
+                .collect(Collectors.toMap(x -> getKeyByMarine(x), x -> x, (x, y) -> y, TreeMap::new));
 
 
     }
@@ -306,7 +306,7 @@ public class CollectionManager implements CollectionKeeper {
         marinesCollection = marinesCollection.entrySet()
                 .stream()
                 .filter(x -> x.getValue().getHeight() < marineToCompare.getHeight())
-                .collect(Collectors.toMap(x -> x.getKey(), y -> y.getValue(), (x, y) -> y, HashMap::new));
+                .collect(Collectors.toMap(x -> x.getKey(), y -> y.getValue(), (x, y) -> y, TreeMap::new));
 
 
         return k;
@@ -334,7 +334,7 @@ public class CollectionManager implements CollectionKeeper {
 
 
     @Override
-    public Map<Integer, SpaceMarine> getMarinesCollection() {
+    public NavigableMap<Integer, SpaceMarine> getMarinesCollection() {
         return marinesCollection;
     }
 }

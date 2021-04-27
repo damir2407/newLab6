@@ -11,14 +11,14 @@ import java.util.*;
 
 public abstract class AbstractMessenger implements Messenger, Serializable {
     protected Map<String, String> commandsDescription = new HashMap<>();
-        
+
     /**
      * for display our marine fields
      *
      * @param marinesCollection collection to read info by
      * @return marine in string format
      */
-    public String getMarineFieldsInformation(Map<Integer, SpaceMarine> marinesCollection) {
+    public String getMarineFieldsInformation(NavigableMap<Integer, SpaceMarine> marinesCollection) {
         String info = "";
         String chapter;
         for (Integer i : marinesCollection.keySet()) {

@@ -3,13 +3,14 @@ package messenger;
 import data.SpaceMarine;
 
 import java.util.Map;
+import java.util.NavigableMap;
 
 public interface Messenger {
     /**
      * @param marinesCollection
      * @return show info about fields
      */
-    String getMarineFieldsInformation(Map<Integer, SpaceMarine> marinesCollection);
+    String getMarineFieldsInformation(NavigableMap<Integer, SpaceMarine> marinesCollection);
 
 
     /**

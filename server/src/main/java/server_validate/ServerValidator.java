@@ -6,6 +6,7 @@ import data.SpaceMarine;
 
 import java.util.Date;
 import java.util.Map;
+import java.util.NavigableMap;
 
 /**
  * interface for FieldsValidation to validate fields
@@ -21,7 +22,7 @@ public interface ServerValidator {
 
     ResultKeeper finalCheckId(Integer id);
 
-    ResultKeeper finalCheckIdUniqueness(Map<Integer, SpaceMarine> collection);
+    ResultKeeper finalCheckIdUniqueness(NavigableMap<Integer, SpaceMarine> collection);
 
     ResultKeeper finalCheckHeartCount(String heartCount);
 

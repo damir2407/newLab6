@@ -5,6 +5,7 @@ import data.SpaceMarine;
 import java.io.FileNotFoundException;
 import java.util.AbstractMap;
 import java.util.Map;
+import java.util.NavigableMap;
 
 
 /**
@@ -14,7 +15,7 @@ public interface FileKeeper {
 
     String load() throws FileNotFoundException, SecurityException;
 
-    void writeCollection(Map<Integer, SpaceMarine> collection);
+    void writeCollection(NavigableMap<Integer, SpaceMarine> collection);
 
 
     String getPath();

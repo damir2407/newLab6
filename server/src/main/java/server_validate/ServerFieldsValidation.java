@@ -10,6 +10,7 @@ import messenger.Messenger;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NavigableMap;
 
 /**
  * class for check marine's fields
@@ -157,8 +158,8 @@ public class ServerFieldsValidation implements ServerValidator {
      * @return collection
      */
     @Override
-    public ResultKeeper finalCheckIdUniqueness(Map<Integer, SpaceMarine> collection) {
-        HashMap<Integer, Boolean> finalMap = new HashMap<>();
+    public ResultKeeper finalCheckIdUniqueness(NavigableMap<Integer, SpaceMarine> collection) {
+        Map<Integer, Boolean> finalMap = new HashMap<>();
         for (Integer i : collection.keySet()) {
             finalMap.put(collection.get(i).getId(), false);
         }

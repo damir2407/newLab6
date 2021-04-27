@@ -7,6 +7,7 @@ import server_validate.ResultKeeper;
 import server_validate.ServerValidator;
 
 import java.util.Map;
+import java.util.NavigableMap;
 
 /**
  * To check fields from file
@@ -27,7 +28,7 @@ public class FileFieldsChecker implements FileCheckKeeper {
      */
 
     @Override
-    public ResultKeeper check(Map<Integer, SpaceMarine> collection) {
+    public ResultKeeper check(NavigableMap<Integer, SpaceMarine> collection) {
         for (Integer i : collection.keySet()) {
             if (!fieldsValidation.finalCheckId(collection.get(i).getId()).isOK())
                 return new Result().error(messenger.incorrectIdMessage());

@@ -49,14 +49,14 @@ public class FileManager implements FileKeeper {
      * @param collection Collection to write.
      */
     @Override
-    public void writeCollection(Map<Integer, SpaceMarine> collection) {
+    public void writeCollection(NavigableMap<Integer, SpaceMarine> collection) {
         try (FileOutputStream collectionFileWriter = new FileOutputStream(new File(path))) {
             collectionFileWriter.write(gson.toJson(collection).getBytes());
-            logger.info(messenger.successfullySave());
+            logger.error(messenger.successfullySave());
         } catch (FileNotFoundException | NullPointerException e) {
-            logger.info(messenger.canNotSaveFile());
+            logger.error(messenger.canNotSaveFile());
         } catch (IOException e) {
-            logger.info(messenger.inputOutputMessage());
+            logger.error(messenger.inputOutputMessage());
         }
     }
 
