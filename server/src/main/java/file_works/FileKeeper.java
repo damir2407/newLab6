@@ -15,7 +15,7 @@ public interface FileKeeper {
 
     String load() throws FileNotFoundException, SecurityException;
 
-    void writeCollection(NavigableMap<Integer, SpaceMarine> collection);
+    void writeCollection(Map<Integer, SpaceMarine> collection);
 
 
     String getPath();

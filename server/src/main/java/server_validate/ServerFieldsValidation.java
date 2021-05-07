@@ -158,7 +158,7 @@ public class ServerFieldsValidation implements ServerValidator {
      * @return collection
      */
     @Override
-    public ResultKeeper finalCheckIdUniqueness(NavigableMap<Integer, SpaceMarine> collection) {
+    public ResultKeeper finalCheckIdUniqueness(Map<Integer, SpaceMarine> collection) {
         Map<Integer, Boolean> finalMap = new HashMap<>();
         for (Integer i : collection.keySet()) {
             finalMap.put(collection.get(i).getId(), false);

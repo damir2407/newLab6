@@ -8,5 +8,5 @@ import java.util.NavigableMap;
 
 public interface FileCheckKeeper {
 
-    ResultKeeper check(NavigableMap<Integer, SpaceMarine> collection);
+    ResultKeeper check(Map<Integer, SpaceMarine> collection);
 }

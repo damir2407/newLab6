@@ -8,5 +8,5 @@ import java.util.NavigableMap;
 
 public interface Transformer {
 
-    NavigableMap<Integer, SpaceMarine> convertFromJson();
+    Map<Integer, SpaceMarine> convertFromJson();
 }

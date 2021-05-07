@@ -1,125 +1,21 @@
-2021-04-27 00:29:23,369 INFO s.ServerReceiver [Thread-0] Получен запрос от /127.0.0.1:60384
-2021-04-27 00:29:23,453 INFO s.ServerSender [Thread-0] Отправка ответа клиенту /127.0.0.1:60384
+2021-05-07 21:19:29,675 INFO s.ServerReceiver [Thread-0] Получен запрос от /127.0.0.1:57679
+2021-05-07 21:19:29,772 INFO s.ServerSender [Thread-0] Отправка ответа клиенту /127.0.0.1:57679
 [
 Коллекция успешно загружена! 
 Введите help для отображения списка доступных команд
 ]
-2021-04-27 00:29:31,417 INFO s.ServerReceiver [Thread-0] Получен запрос от /127.0.0.1:60384
-2021-04-27 00:29:31,425 INFO s.ServerSender [Thread-0] Отправка ответа клиенту /127.0.0.1:60384
+2021-05-07 21:19:39,751 INFO s.ServerReceiver [Thread-0] Получен запрос от /127.0.0.1:57679
+2021-05-07 21:19:39,756 INFO s.ServerSender [Thread-0] Отправка ответа клиенту /127.0.0.1:57679
 [
-key: 0
-id №1
-Name: asda
-Coordinates: X: 36.3
-			 Y: 56.2
-creationDate: Mon Mar 01 15:12:43 ALMT 2021
-Health: 313.0
-Heart Count: 1
-Height: 2.0
-Category: SCOUT
-Chapter: Name: dasdada
-	     World: sdaasaaaa
-
-
-key: 1
-id №213912
-Name: DamiR
-Coordinates: X: 36.3
-			 Y: 56.2
-creationDate: Tue Feb 23 14:42:44 ALMT 2021
-Health: 5555.2
-Heart Count: 1
-Height: 5321.0
-Category: SCOUT
-Chapter: Name: Attack of the Clones
-	     World: Naboo
-
-
-key: 51905
-id №121
-Name: sad
-Coordinates: X: 1.0
-			 Y: 2.0
-creationDate: Mon Mar 01 15:10:48 ALMT 2021
-Health: 2.0
-Heart Count: 3
-Height: 312.0
-Category: SCOUT
-Chapter: Name: sad
-	     World: das
-
-
-key: 2
-id №12312
-Name: Apppaaa
-Coordinates: X: 10.4
-			 Y: 10.1
-creationDate: Sat Aug 14 19:23:32 ALMT 2021
-Health: 1999.2
-Heart Count: 3
-Height: 3200.0
-Category: CHAPLAIN
-Chapter: Name: Revenge of the Sith
-	     World: Kashyyyk
-
-
-key: 28083
-id №81966
-Name: ksadm
-Coordinates: X: 12.0
-			 Y: 1.0
-creationDate: Mon Mar 01 15:11:12 ALMT 2021
-Health: 2.0
-Heart Count: 2
-Height: 2.0
-Category: SCOUT
-Chapter: Name: das
-	     World: das
-
-
-key: 39864
-id №11
-Name: NOVIY
-Coordinates: X: 12.0
-			 Y: 1.0
-creationDate: Mon Mar 01 15:16:52 ALMT 2021
-Health: 1.0
-Heart Count: 1
-Height: 1.0
-Category: DREADNOUGHT
-Chapter: Name: dsa
-	     World: das
-
-
-
+Информация о коллекции:
+Тип коллекции: java.util.LinkedHashMap
+Количество элементов в коллекции: 6
+Дата последней инициализации: Fri May 07 21:19:29 ALMT 2021
+Дата последнего сохранения: Сохранения еще не было.
+Путь до json файла: C:\Users\User\Desktop\Лабораторные работы\Программирование\ballab6\test\text.json
 ]
-2021-04-27 00:31:53,591 INFO s.ServerReceiver [Thread-0] Получен запрос от /127.0.0.1:57934
-2021-04-27 00:31:53,675 INFO s.ServerSender [Thread-0] Отправка ответа клиенту /127.0.0.1:57934
-[
-Коллекция успешно загружена! 
-Введите help для отображения списка доступных команд
-]
-2021-04-27 00:32:04,651 INFO s.ServerReceiver [Thread-0] Получен запрос от /127.0.0.1:57934
-2021-04-27 00:32:04,652 INFO s.ServerSender [Thread-0] Отправка ответа клиенту /127.0.0.1:57934
-[
-Коллекция очищена
-]
-2021-04-27 00:32:07,648 INFO s.ServerReceiver [Thread-0] Получен запрос от /127.0.0.1:57934
-2021-04-27 00:32:07,650 ERROR s.ServerSender [Thread-0] Отправка ответа клиенту /127.0.0.1:57934
-[
-Коллекция пустая!
-]
-2021-04-27 00:42:09,699 INFO s.ServerReceiver [Thread-0] Получен запрос от /127.0.0.1:56547
-2021-04-27 13:17:43,226 ERROR s.Server [main] Ошибка на сервере
-2021-04-27 13:17:48,308 INFO s.ServerReceiver [Thread-0] Получен запрос от /127.0.0.1:59761
-2021-04-27 13:18:26,689 INFO s.ServerReceiver [Thread-0] Получен запрос от /127.0.0.1:59775
-2021-04-27 13:18:26,776 INFO s.ServerSender [Thread-0] Отправка ответа клиенту /127.0.0.1:59775
-[
-Коллекция успешно загружена! 
-Введите help для отображения списка доступных команд
-]
-2021-04-27 13:18:47,862 INFO s.ServerReceiver [Thread-0] Получен запрос от /127.0.0.1:59775
-2021-04-27 13:18:47,877 INFO s.ServerSender [Thread-0] Отправка ответа клиенту /127.0.0.1:59775
+2021-05-07 21:19:43,770 INFO s.ServerReceiver [Thread-0] Получен запрос от /127.0.0.1:57679
+2021-05-07 21:19:43,773 INFO s.ServerSender [Thread-0] Отправка ответа клиенту /127.0.0.1:57679
 [
 key: 0
 id №1
@@ -207,14 +103,139 @@ Chapter: Name: sad
 
 
 ]
-2021-04-27 13:18:51,904 INFO s.ServerReceiver [Thread-0] Получен запрос от /127.0.0.1:59775
-2021-04-27 13:18:51,904 INFO s.ServerSender [Thread-0] Отправка ответа клиенту /127.0.0.1:59775
+2021-05-07 21:19:46,780 INFO s.ServerReceiver [Thread-0] Получен запрос от /127.0.0.1:57679
+2021-05-07 21:19:46,781 INFO s.ServerSender [Thread-0] Отправка ответа клиенту /127.0.0.1:57679
 [
 Информация о коллекции:
 Тип коллекции: java.util.TreeMap
 Количество элементов в коллекции: 6
-Дата последней инициализации: Tue Apr 27 13:18:26 ALMT 2021
+Дата последней инициализации: Fri May 07 21:19:29 ALMT 2021
 Дата последнего сохранения: Сохранения еще не было.
 Путь до json файла: C:\Users\User\Desktop\Лабораторные работы\Программирование\ballab6\test\text.json
 ]
-2021-04-27 13:19:10,059 INFO e.ServerReader [main] Завершение работы сервера!
+2021-05-07 21:21:35,852 INFO s.ServerReceiver [Thread-0] Получен запрос от /127.0.0.1:57706
+2021-05-07 21:21:35,940 INFO s.ServerSender [Thread-0] Отправка ответа клиенту /127.0.0.1:57706
+[
+Коллекция успешно загружена! 
+Введите help для отображения списка доступных команд
+]
+2021-05-07 21:21:38,875 INFO s.ServerReceiver [Thread-0] Получен запрос от /127.0.0.1:57706
+2021-05-07 21:21:38,876 INFO s.ServerSender [Thread-0] Отправка ответа клиенту /127.0.0.1:57706
+[
+print_field_descending_heart_count: вывести значения поля heartCount всех элементов в порядке убывания.
+remove_greater {element}: удалить из коллекции все элементы, превышающие заданный.
+show: вывести в стандартный поток вывода все элементы коллекции в строковом представлении.
+clear: очистить коллекцию.
+save: сохранить коллекцию в файл.
+replace_if_lowe null {element}: заменить значение по ключу, если новое значение меньше старого.
+update id {element}: обновить значение элемента коллекции, id которого равен заданному.
+remove_key null: удалить элемент из коллекции по его ключу.
+help: вывести справку по доступным командам.
+exit: завершить программу (без сохранения в файл).
+remove_lower_key null: удалить из коллекции все элементы, ключ которых меньше, чем заданный.
+execute_script file_name:  считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме..
+average_of_height: вывести среднее значение поля height для всех элементов коллекции.
+group_counting_by_category: сгруппировать элементы коллекции по значению поля category, вывести количество элементов в каждой группе.
+info: вывести в стандартный поток вывода информацию о коллекции (тип, дата инициализации, количество элементов и т.д.).
+insert null {element}: добавить новый элемент с заданным ключом.
+
+]
+2021-05-07 21:21:41,894 INFO s.ServerReceiver [Thread-0] Получен запрос от /127.0.0.1:57706
+2021-05-07 21:21:41,905 INFO s.ServerSender [Thread-0] Отправка ответа клиенту /127.0.0.1:57706
+[
+key: 0
+id №1
+Name: asda
+Coordinates: X: 36.3
+			 Y: 56.2
+creationDate: Mon Mar 01 15:12:43 ALMT 2021
+Health: 313.0
+Heart Count: 1
+Height: 2.0
+Category: SCOUT
+Chapter: Name: dasdada
+	     World: sdaasaaaa
+
+
+key: 1
+id №213912
+Name: DamiR
+Coordinates: X: 36.3
+			 Y: 56.2
+creationDate: Tue Feb 23 14:42:44 ALMT 2021
+Health: 5555.2
+Heart Count: 1
+Height: 5321.0
+Category: SCOUT
+Chapter: Name: Attack of the Clones
+	     World: Naboo
+
+
+key: 2
+id №12312
+Name: Apppaaa
+Coordinates: X: 10.4
+			 Y: 10.1
+creationDate: Sat Aug 14 19:23:32 ALMT 2021
+Health: 1999.2
+Heart Count: 3
+Height: 3200.0
+Category: CHAPLAIN
+Chapter: Name: Revenge of the Sith
+	     World: Kashyyyk
+
+
+key: 28083
+id №81966
+Name: ksadm
+Coordinates: X: 12.0
+			 Y: 1.0
+creationDate: Mon Mar 01 15:11:12 ALMT 2021
+Health: 2.0
+Heart Count: 2
+Height: 2.0
+Category: SCOUT
+Chapter: Name: das
+	     World: das
+
+
+key: 39864
+id №11
+Name: NOVIY
+Coordinates: X: 12.0
+			 Y: 1.0
+creationDate: Mon Mar 01 15:16:52 ALMT 2021
+Health: 1.0
+Heart Count: 1
+Height: 1.0
+Category: DREADNOUGHT
+Chapter: Name: dsa
+	     World: das
+
+
+key: 51905
+id №121
+Name: sad
+Coordinates: X: 1.0
+			 Y: 2.0
+creationDate: Mon Mar 01 15:10:48 ALMT 2021
+Health: 2.0
+Heart Count: 3
+Height: 312.0
+Category: SCOUT
+Chapter: Name: sad
+	     World: das
+
+
+
+]
+2021-05-07 21:21:44,918 INFO s.ServerReceiver [Thread-0] Получен запрос от /127.0.0.1:57706
+2021-05-07 21:21:44,919 INFO s.ServerSender [Thread-0] Отправка ответа клиенту /127.0.0.1:57706
+[
+Информация о коллекции:
+Тип коллекции: java.util.TreeMap
+Количество элементов в коллекции: 6
+Дата последней инициализации: Fri May 07 21:21:35 ALMT 2021
+Дата последнего сохранения: Сохранения еще не было.
+Путь до json файла: C:\Users\User\Desktop\Лабораторные работы\Программирование\ballab6\test\text.json
+]

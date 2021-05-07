@@ -10,7 +10,7 @@ public interface Messenger {
      * @param marinesCollection
      * @return show info about fields
      */
-    String getMarineFieldsInformation(NavigableMap<Integer, SpaceMarine> marinesCollection);
+    String getMarineFieldsInformation(Map<Integer, SpaceMarine> marinesCollection);
 
 
     /**

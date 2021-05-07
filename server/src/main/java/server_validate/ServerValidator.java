@@ -22,7 +22,7 @@ public interface ServerValidator {
 
     ResultKeeper finalCheckId(Integer id);
 
-    ResultKeeper finalCheckIdUniqueness(NavigableMap<Integer, SpaceMarine> collection);
+    ResultKeeper finalCheckIdUniqueness(Map<Integer, SpaceMarine> collection);
 
     ResultKeeper finalCheckHeartCount(String heartCount);
 

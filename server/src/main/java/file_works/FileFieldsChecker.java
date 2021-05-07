@@ -28,7 +28,7 @@ public class FileFieldsChecker implements FileCheckKeeper {
      */
 
     @Override
-    public ResultKeeper check(NavigableMap<Integer, SpaceMarine> collection) {
+    public ResultKeeper check(Map<Integer, SpaceMarine> collection) {
         for (Integer i : collection.keySet()) {
             if (!fieldsValidation.finalCheckId(collection.get(i).getId()).isOK())
                 return new Result().error(messenger.incorrectIdMessage());

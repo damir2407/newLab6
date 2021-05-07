@@ -14,7 +14,7 @@ import java.util.stream.Stream;
  * Class for working with our collection.
  */
 public class CollectionManager implements CollectionKeeper {
-    private NavigableMap<Integer, SpaceMarine> marinesCollection;
+    private Map<Integer, SpaceMarine> marinesCollection;
     private FileKeeper fileManager;
     private Date lastSave;
     private Date lastInitialization;
@@ -334,7 +334,7 @@ public class CollectionManager implements CollectionKeeper {
 
 
     @Override
-    public NavigableMap<Integer, SpaceMarine> getMarinesCollection() {
+    public Map<Integer, SpaceMarine> getMarinesCollection() {
         return marinesCollection;
     }
 }

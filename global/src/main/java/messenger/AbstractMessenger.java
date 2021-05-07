@@ -18,7 +18,7 @@ public abstract class AbstractMessenger implements Messenger, Serializable {
      * @param marinesCollection collection to read info by
      * @return marine in string format
      */
-    public String getMarineFieldsInformation(NavigableMap<Integer, SpaceMarine> marinesCollection) {
+    public String getMarineFieldsInformation(Map<Integer, SpaceMarine> marinesCollection) {
         String info = "";
         String chapter;
         for (Integer i : marinesCollection.keySet()) {

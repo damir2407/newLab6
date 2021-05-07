@@ -34,10 +34,10 @@ public class Transform implements Transformer {
     }
 
     @Override
-    public NavigableMap<Integer, SpaceMarine> convertFromJson() {
-        NavigableMap<Integer, SpaceMarine> marines = null;
+    public Map<Integer, SpaceMarine> convertFromJson() {
+        Map<Integer, SpaceMarine> marines = null;
         try {
-            marines = gson.fromJson(fileManager.load(), new TypeToken<NavigableMap<Integer, SpaceMarine>>() {
+            marines = gson.fromJson(fileManager.load(), new TypeToken<Map<Integer, SpaceMarine>>() {
             }.getType());
             if (marines == null) throw new NoSuchElementException();
 
