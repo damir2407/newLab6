@@ -2,12 +2,13 @@ package execute_works;
 
 import commands.LanguageManager;
 import messenger.Messenger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import request_structure.Request;
 import request_structure.RequestKeeper;
-import server_validate.Answer;
-import server_validate.AnswerKeeper;
-import server_validate.ResultKeeper;
+import utility.*;
 import server_works.ServerSendKeeper;
+import utility.Error;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -21,6 +22,7 @@ public class ServerExecutor implements ServerExecuteKeeper {
     private DatagramPacket datagramPacket;
     private ServerSendKeeper serverSender;
     private ServerReadKeeper serverReader;
+    private static final Logger logger = LogManager.getLogger();
 
     public ServerExecutor(ServerCommandKeeper serverCommandManager) {
         this.serverCommandManager = serverCommandManager;
@@ -56,10 +58,13 @@ public class ServerExecutor implements ServerExecuteKeeper {
             }
 
 
-            ResultKeeper result = pickCommand(request);
-            if (!result.isOK()) {
-                return new Answer().error(result.getErrorMessage());
-            } else return new Answer().ok(result.getObject());
+            Result<Object> result = pickCommand(request);
+            if (result instanceof utility.Error) {
+                return new Answer().error(((Error<String>) result).getErrorMessage());
+            }
+            if (result instanceof Success) {
+                return new Answer().ok(((Success<?>) result).getObject());
+            }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -67,8 +72,8 @@ public class ServerExecutor implements ServerExecuteKeeper {
     }
 
     @Override
-    public ResultKeeper pickCommand(RequestKeeper request) {
-        ResultKeeper result = (serverCommandManager.getAllCommands().get(request.getCommand()).execute(request.getArgs()));
+    public Result<Object> pickCommand(RequestKeeper request) {
+        Result<Object> result = (serverCommandManager.getAllCommands().get(request.getCommand()).execute(request.getArgs()));
         return result;
     }
 

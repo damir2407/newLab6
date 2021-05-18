@@ -6,7 +6,8 @@ import messenger.Messenger;
 import print_works.PrintKeeper;
 import request_structure.Request;
 import request_structure.RequestKeeper;
-import server_validate.ResultKeeper;
+import utility.Result;
+import utility.Success;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -41,17 +42,20 @@ public class ClientExecutor implements ClientExecuteKeeper {
         try {
             //Проверка на клиентскую команду
             if (clientCommandManager.getClientCommands().containsKey(userCommand[0].trim()) && userCommand[0].trim().equals("execute_script")) {
-                ResultKeeper result = (clientCommandManager.getClientCommands().get(userCommand[0]).execute(userCommand[1]));
-                if (!result.isOK())
-                    printMachine.println(result.getErrorMessage());
+                Result<Object> result = (clientCommandManager.getClientCommands().get(userCommand[0]).execute(userCommand[1]));
+                if (result instanceof Error)
+                    printMachine.println(((Error) result).getMessage());
                 else {
                     scriptMode(userCommand[1]);
                 }
             } else if (clientCommandManager.getClientCommands().containsKey(userCommand[0].trim())) {
-                ResultKeeper result = (clientCommandManager.getClientCommands().get(userCommand[0]).execute(userCommand[1]));
-                if (!result.isOK()) {
-                    printMachine.println(result.getErrorMessage());
-                } else printMachine.println(result.getObject());
+                Result<Object> result = (clientCommandManager.getClientCommands().get(userCommand[0]).execute(userCommand[1]));
+                if (result instanceof Error) {
+                    printMachine.println(((Error) result).getMessage());
+                }
+                if (result instanceof Success) {
+                    printMachine.println(((Success<?>) result).getObject());
+                }
                 //проверка на сервернуюкоманду
             } else if (clientCommandManager.getAvailableCommands().containsKey(userCommand[0])) {
                 if (clientCommandManager.getAvailableCommands().get(userCommand[0]).equals(userCommand[1].isEmpty())) {

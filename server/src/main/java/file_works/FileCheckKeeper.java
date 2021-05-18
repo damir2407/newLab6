@@ -1,12 +1,11 @@
 package file_works;
 
 import data.SpaceMarine;
-import server_validate.ResultKeeper;
+import utility.Result;
 
 import java.util.Map;
-import java.util.NavigableMap;
 
 public interface FileCheckKeeper {
 
-    ResultKeeper check(Map<Integer, SpaceMarine> collection);
+    Result<Object> check(Map<Integer, SpaceMarine> collection);
 }

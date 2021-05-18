@@ -41,7 +41,7 @@ public class ClientSender implements ClientSendKeeper {
             byteBuffer.clear();
 
         } catch (IOException e) {
-            printMachine.println("Ошибка во время отправки запроса!");
+            printMachine.println("РћС€РёР±РєР°!");
         }
 
     }

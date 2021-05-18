@@ -3,8 +3,9 @@ package commands;
 import collection_works.CollectionKeeper;
 import data.SpaceMarine;
 import messenger.Messenger;
-import server_validate.Result;
-import server_validate.ResultKeeper;
+import utility.Error;
+import utility.Result;
+import utility.Success;
 
 
 /**
@@ -28,23 +29,23 @@ public class UpdateCommand implements ServerCommand {
      * @return Command exit status.
      */
     @Override
-    public ResultKeeper execute(Object... args) {
+    public Result<Object> execute(Object... args) {
 
         if (collectionManager.size() == 0) {
-            return new Result().error(messenger.collectionIsEmptyMessage());
+            return new Error(messenger.collectionIsEmptyMessage());
         }
         Integer id = (Integer) args[0];
         SpaceMarine spaceMarine = (SpaceMarine) args[1];
         Integer key;
         key = collectionManager.getKeyById(id);
         if (key == null) {
-            return new Result().error(messenger.itemNotFoundMessage());
+            return new Error(messenger.itemNotFoundMessage());
         }
 
         collectionManager.removeById(id);
 
         collectionManager.insertToCollection(key, spaceMarine);
-        return new Result().ok(messenger.successfullyUpdatedMessage());
+        return new Success<String>(messenger.successfullyUpdatedMessage());
     }
 }
 

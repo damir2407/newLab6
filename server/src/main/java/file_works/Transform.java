@@ -6,7 +6,8 @@ import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import data.SpaceMarine;
 import messenger.Messenger;
-import server_validate.Answer;
+import utility.Answer;
+import utility.Success;
 import server_works.ServerSendKeeper;
 
 import java.io.FileNotFoundException;
@@ -41,10 +42,10 @@ public class Transform implements Transformer {
             }.getType());
             if (marines == null) throw new NoSuchElementException();
 
-            if (fileFieldsChecker.check(marines).isOK())
+            if (fileFieldsChecker.check(marines) instanceof Success)
                 serverSender.send(new Answer().ok(messenger.collectionSuccessfullyMessage()), inetAddress, port);
-            else {
-                serverSender.send(new Answer().error(fileFieldsChecker.check(marines).getErrorMessage()), inetAddress, port);
+            else if (fileFieldsChecker.check(marines) instanceof Error) {
+                serverSender.send(new Answer().error(((Error) fileFieldsChecker.check(marines)).getMessage()), inetAddress, port);
                 marines.clear();
             }
         } catch (JsonSyntaxException | NumberFormatException exception) {

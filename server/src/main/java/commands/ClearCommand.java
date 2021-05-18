@@ -2,8 +2,8 @@ package commands;
 
 import collection_works.CollectionKeeper;
 import messenger.Messenger;
-import server_validate.Result;
-import server_validate.ResultKeeper;
+import utility.Result;
+import utility.Success;
 
 
 /**
@@ -26,9 +26,9 @@ public class ClearCommand implements ServerCommand {
      * @return Command exit status.
      */
     @Override
-    public ResultKeeper execute(Object... args) {
+    public Result<Object> execute(Object... args) {
         collectionManager.clearCollection();
-        return new Result().ok(messenger.successfullyClearedMessage());
+        return new Success<String>(messenger.successfullyClearedMessage());
     }
 
 

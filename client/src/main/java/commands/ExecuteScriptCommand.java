@@ -1,8 +1,9 @@
 package commands;
 
 import messenger.Messenger;
-import server_validate.Result;
-import server_validate.ResultKeeper;
+import utility.Error;
+import utility.Result;
+import utility.Success;
 
 
 /**
@@ -17,17 +18,16 @@ public class ExecuteScriptCommand implements ClientCommand {
     }
 
 
-
     /**
      * Executes the command.
      *
      * @return Command exit status.
      */
     @Override
-    public ResultKeeper execute(String args) {
+    public Result<Object> execute(String args) {
         if (args.isEmpty()) {
-            return new Result().error(messenger.argumentErrorMessage(name, true));
+            return new Error(messenger.argumentErrorMessage(name, true));
         }
-        return new Result().ok(messenger.successfullyExecuteCommandMessage("execute_command"));
+        return new Success<String>(messenger.successfullyExecuteCommandMessage("execute_command"));
     }
 }

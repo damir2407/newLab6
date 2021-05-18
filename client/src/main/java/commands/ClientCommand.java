@@ -1,8 +1,8 @@
 package commands;
 
-import server_validate.ResultKeeper;
+import utility.Result;
 
 public interface ClientCommand {
 
-    ResultKeeper execute(String args);
+    Result<Object> execute(String args);
 }

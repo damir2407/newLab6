@@ -4,6 +4,8 @@ import client_validate.ClientValidator;
 import data.AstartesCategory;
 import messenger.Messenger;
 import print_works.PrintKeeper;
+import utility.Result;
+import utility.Success;
 
 import java.util.Scanner;
 
@@ -39,9 +41,11 @@ public class Poll implements PollKeeper {
         printMachine.println(messenger.nameInputMessage());
         name = userScanner.nextLine().trim();
         if (fileMode) printMachine.println(name);
-        if (!(clientValidator.finalCheckName(name).isOK()))
-            printMachine.println(clientValidator.finalCheckName(name).getErrorMessage());
-        else name = (String) clientValidator.finalCheckName(name).getObject();
+        Result<Object> result = clientValidator.finalCheckName(name);
+        if (result instanceof Error)
+            printMachine.println(((Error) result).getMessage());
+        if (result instanceof Success)
+            name = ((Success<String>) result).getObject();
         return name;
     }
 
@@ -91,9 +95,11 @@ public class Poll implements PollKeeper {
         printMachine.println(messenger.xCoordinateInputMessage());
         fieldX = userScanner.nextLine().trim();
         if (fileMode) printMachine.println(fieldX);
-        if (!(clientValidator.finalCheckX(fieldX).isOK()))
-            printMachine.println(clientValidator.finalCheckX(fieldX).getErrorMessage());
-        else x = (Float) clientValidator.finalCheckX(fieldX).getObject();
+        Result<Object> result = clientValidator.finalCheckX(fieldX);
+        if (result instanceof Error)
+            printMachine.println(((Error) result).getMessage());
+        if (result instanceof Success)
+            x = ((Success<Float>) result).getObject();
         return x;
     }
 
@@ -109,9 +115,10 @@ public class Poll implements PollKeeper {
         printMachine.println(messenger.yCoordinateInputMessage());
         fieldY = userScanner.nextLine().trim();
         if (fileMode) printMachine.println(fieldY);
-        if (!(clientValidator.finalCheckY(fieldY).isOK()))
-            printMachine.println(clientValidator.finalCheckY(fieldY).getErrorMessage());
-        else y = (Double) clientValidator.finalCheckY(fieldY).getObject();
+        if (clientValidator.finalCheckY(fieldY) instanceof Error)
+            printMachine.println(((Error) clientValidator.finalCheckY(fieldY)).getMessage());
+        if (clientValidator.finalCheckY(fieldY) instanceof Success)
+            y = ((Success<Double>) clientValidator.finalCheckY(fieldY)).getObject();
         return y;
     }
 
@@ -127,9 +134,10 @@ public class Poll implements PollKeeper {
         printMachine.println(messenger.healthInputMessage());
         fieldHealth = userScanner.nextLine().trim();
         if (fileMode) printMachine.println(fieldHealth);
-        if (!(clientValidator.finalCheckHealth(fieldHealth).isOK()))
-            printMachine.println(clientValidator.finalCheckHealth(fieldHealth).getErrorMessage());
-        else health = (Float) clientValidator.finalCheckHealth(fieldHealth).getObject();
+        if (clientValidator.finalCheckHealth(fieldHealth) instanceof Error)
+            printMachine.println(((Error) clientValidator.finalCheckHealth(fieldHealth)).getMessage());
+        if (clientValidator.finalCheckHealth(fieldHealth) instanceof Success)
+            health = ((Success<Float>) clientValidator.finalCheckHealth(fieldHealth)).getObject();
         return health;
     }
 
@@ -145,9 +153,10 @@ public class Poll implements PollKeeper {
         printMachine.println(messenger.heartCountInputMessage());
         fieldHeartCount = userScanner.nextLine().trim();
         if (fileMode) printMachine.println(fieldHeartCount);
-        if (!(clientValidator.finalCheckHeartCount(fieldHeartCount).isOK()))
-            printMachine.println(clientValidator.finalCheckHeartCount(fieldHeartCount).getErrorMessage());
-        else heartCount = (Integer) clientValidator.finalCheckHeartCount(fieldHeartCount).getObject();
+        if (clientValidator.finalCheckHeartCount(fieldHeartCount) instanceof Error)
+            printMachine.println(((Error) clientValidator.finalCheckHeartCount(fieldHeartCount)).getMessage());
+        if (clientValidator.finalCheckHeartCount(fieldHeartCount) instanceof Success)
+            heartCount = ((Success<Integer>) clientValidator.finalCheckHeartCount(fieldHeartCount)).getObject();
         return heartCount;
     }
 
@@ -163,9 +172,10 @@ public class Poll implements PollKeeper {
         printMachine.println(messenger.heightInputMessage());
         fieldHeight = userScanner.nextLine().trim();
         if (fileMode) printMachine.println(fieldHeight);
-        if (!(clientValidator.finalCheckHeight(fieldHeight).isOK()))
-            printMachine.println(clientValidator.finalCheckHeight(fieldHeight).getErrorMessage());
-        else height = (float) clientValidator.finalCheckHeight(fieldHeight).getObject();
+        if (clientValidator.finalCheckHeight(fieldHeight) instanceof Error)
+            printMachine.println(((Error) clientValidator.finalCheckHeight(fieldHeight)).getMessage());
+        if (clientValidator.finalCheckHeight(fieldHeight) instanceof Success)
+            height = ((Success<Float>) clientValidator.finalCheckHeight(fieldHeight)).getObject();
         return height;
     }
 
@@ -186,9 +196,10 @@ public class Poll implements PollKeeper {
         printMachine.println(messenger.categoryInputMessage());
         fieldCategory = userScanner.nextLine().trim();
         if (fileMode) printMachine.println(fieldCategory);
-        if (!(clientValidator.finalCheckCategory(fieldCategory).isOK()))
-            printMachine.println(clientValidator.finalCheckCategory(fieldCategory).getErrorMessage());
-        else category = (AstartesCategory) clientValidator.finalCheckCategory(fieldCategory).getObject();
+        if (clientValidator.finalCheckCategory(fieldCategory) instanceof Error)
+            printMachine.println(((Error) clientValidator.finalCheckCategory(fieldCategory)).getMessage());
+        if (clientValidator.finalCheckCategory(fieldCategory) instanceof Success)
+            category = ((Success<AstartesCategory>) clientValidator.finalCheckCategory(fieldCategory)).getObject();
         return category;
     }
 
@@ -203,9 +214,10 @@ public class Poll implements PollKeeper {
         printMachine.println(messenger.chapterNameMessage());
         name = userScanner.nextLine().trim();
         if (fileMode) printMachine.println(name);
-        if (!(clientValidator.finalCheckChapterName(name).isOK()))
-            printMachine.println(clientValidator.finalCheckChapterName(name).getErrorMessage());
-        else name = (String) clientValidator.finalCheckChapterName(name).getObject();
+        if (clientValidator.finalCheckChapterName(name) instanceof Error)
+            printMachine.println(((Error) clientValidator.finalCheckChapterName(name)).getMessage());
+        if (clientValidator.finalCheckChapterName(name) instanceof Success)
+            name = ((Success<String>) clientValidator.finalCheckChapterName(name)).getObject();
         return name;
     }
 
@@ -220,9 +232,10 @@ public class Poll implements PollKeeper {
         printMachine.println(messenger.chapterWorldMessage());
         world = userScanner.nextLine().trim();
         if (fileMode) printMachine.println(world);
-        if (!(clientValidator.finalCheckChapterWorld(world).isOK()))
-            printMachine.println(clientValidator.finalCheckChapterWorld(world).getErrorMessage());
-        else world = (String) clientValidator.finalCheckChapterWorld(world).getObject();
+        if (clientValidator.finalCheckChapterWorld(world) instanceof Error)
+            printMachine.println(((Error) clientValidator.finalCheckChapterWorld(world)).getMessage());
+        if (clientValidator.finalCheckChapterWorld(world) instanceof Success)
+            world = ((Success<String>) clientValidator.finalCheckChapterWorld(world)).getObject();
         return world;
     }
 }

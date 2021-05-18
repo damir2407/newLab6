@@ -1,9 +1,7 @@
 package commands;
 
 import collection_works.CollectionKeeper;
-import messenger.Messenger;
-import server_validate.Result;
-import server_validate.ResultKeeper;
+import utility.Result;
 
 /**
  * Command 'save'. Saves the collection to a file.
@@ -24,7 +22,7 @@ public class SaveCommand implements ServerCommand {
      */
 
     @Override
-    public ResultKeeper execute(Object... args) {
+    public Result<Object> execute(Object... args) {
         try {
             collectionManager.sortCollection();
             collectionManager.saveCollection();

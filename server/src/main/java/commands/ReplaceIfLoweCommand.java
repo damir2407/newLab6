@@ -3,8 +3,9 @@ package commands;
 import collection_works.CollectionKeeper;
 import data.SpaceMarine;
 import messenger.Messenger;
-import server_validate.Result;
-import server_validate.ResultKeeper;
+import utility.Error;
+import utility.Result;
+import utility.Success;
 
 
 /**
@@ -27,20 +28,24 @@ public class ReplaceIfLoweCommand implements ServerCommand {
      * @return Command exit status.
      */
     @Override
-    public ResultKeeper execute(Object... args) {
-        collectionManager.sortCollection();
+    public Result<Object> execute(Object... args) {
+        try {
+            collectionManager.sortCollection();
 
 
-        if (collectionManager.size() == 0) {
-            return new Result().error(messenger.collectionIsEmptyMessage());
+            if (collectionManager.size() == 0) {
+                return new Error(messenger.collectionIsEmptyMessage());
+            }
+            Integer key = (Integer) args[0];
+            SpaceMarine spaceMarine = (SpaceMarine) args[1];
+            if (!collectionManager.getByKey(key)) {
+                return new Error(messenger.itemNotFoundMessage());
+            }
+            if (collectionManager.replaceIfLowe(key, spaceMarine)) {
+                return new Success<String>(messenger.successfullyReplaceMessage());
+            } else return new Success<String>(messenger.notSuccessfullyReplaceMessage());
+        } catch (NumberFormatException e) {
+            return new Error(messenger.numberFormatArgumentMessage());
         }
-        Integer key = (Integer) args[0];
-        SpaceMarine spaceMarine = (SpaceMarine) args[1];
-        if (!collectionManager.getByKey(key)) {
-            return new Result().error(messenger.itemNotFoundMessage());
-        }
-        if (collectionManager.replaceIfLowe(key, spaceMarine)) {
-            return new Result().ok(messenger.successfullyReplaceMessage());
-        } else return new Result().ok(messenger.notSuccessfullyReplaceMessage());
     }
 }

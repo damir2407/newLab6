@@ -3,8 +3,9 @@ package commands;
 import collection_works.CollectionKeeper;
 import data.SpaceMarine;
 import messenger.Messenger;
-import server_validate.Result;
-import server_validate.ResultKeeper;
+import utility.Error;
+import utility.Result;
+import utility.Success;
 
 /**
  * Command 'remove_greater'. Removes elements greater than user entered.
@@ -26,14 +27,14 @@ public class RemoveGreaterCommand implements ServerCommand {
      * @return Command exit status.
      */
     @Override
-    public ResultKeeper execute(Object... args) {
+    public Result<Object> execute(Object... args) {
         SpaceMarine spaceMarine = (SpaceMarine) args[0];
         if (collectionManager.size() == 0) {
-            return new Result().error(messenger.collectionIsEmptyMessage());
+            return new Error(messenger.collectionIsEmptyMessage());
         }
         if (collectionManager.removeGreater(spaceMarine) > 0) {
-            return new Result().ok(messenger.successfullyDeleteMessage());
+            return new Success<String>(messenger.successfullyDeleteMessage());
         } else
-            return new Result().error(messenger.notSuccessfullyDeleteMessage());
+            return new Error(messenger.notSuccessfullyDeleteMessage());
     }
 }

@@ -2,8 +2,9 @@ package commands;
 
 import collection_works.CollectionKeeper;
 import messenger.Messenger;
-import server_validate.Result;
-import server_validate.ResultKeeper;
+import utility.Error;
+import utility.Result;
+import utility.Success;
 
 /**
  * Command 'group_counting_by_category'. Group the elements of the collection
@@ -25,11 +26,11 @@ public class GroupCountingByCategoryCommand implements ServerCommand {
      * @return Command exit status.
      */
     @Override
-    public ResultKeeper execute(Object... args) {
+    public Result<Object> execute(Object... args) {
         if (collectionManager.size() == 0) {
-            return new Result().error(messenger.collectionIsEmptyMessage());
+            return new Error(messenger.collectionIsEmptyMessage());
         }
-        return new Result().ok(messenger.getCountingByCategory(collectionManager.getCountingCategory()));
+        return new Success<String>(messenger.getCountingByCategory(collectionManager.getCountingCategory()));
     }
 }
 

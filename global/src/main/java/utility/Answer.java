@@ -1,4 +1,4 @@
-package server_validate;
+package utility;
 
 import java.io.Serializable;
 

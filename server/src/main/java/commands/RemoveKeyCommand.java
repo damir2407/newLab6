@@ -3,8 +3,9 @@ package commands;
 
 import collection_works.CollectionKeeper;
 import messenger.Messenger;
-import server_validate.Result;
-import server_validate.ResultKeeper;
+import utility.Error;
+import utility.Result;
+import utility.Success;
 
 
 /**
@@ -27,16 +28,19 @@ public class RemoveKeyCommand implements ServerCommand {
      * @return Command exit status.
      */
     @Override
-    public ResultKeeper execute(Object... args) {
-
-        if (collectionManager.size() == 0) {
-            return new Result().error(messenger.collectionIsEmptyMessage());
+    public Result<Object> execute(Object... args) {
+        try {
+            if (collectionManager.size() == 0) {
+                return new Error(messenger.collectionIsEmptyMessage());
+            }
+            Integer key = Integer.parseInt(String.valueOf(args[0]));
+            if (collectionManager.getByKey(key) == false) {
+                return new Error(messenger.itemNotFoundMessage());
+            }
+            collectionManager.removeByKey(key);
+            return new Success<String>(messenger.successfullyDeleteMessage());
+        } catch (NumberFormatException e) {
+            return new Error(messenger.numberFormatArgumentMessage());
         }
-        Integer key = Integer.parseInt(String.valueOf(args[0]));
-        if (collectionManager.getByKey(key) == false) {
-            return new Result().error(messenger.itemNotFoundMessage());
-        }
-        collectionManager.removeByKey(key);
-        return new Result().ok(messenger.successfullyDeleteMessage());
     }
 }

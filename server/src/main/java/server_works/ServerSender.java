@@ -2,8 +2,8 @@ package server_works;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import server_validate.Answer;
-import server_validate.AnswerKeeper;
+import utility.Answer;
+import utility.AnswerKeeper;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

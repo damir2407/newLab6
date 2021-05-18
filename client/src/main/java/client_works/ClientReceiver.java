@@ -1,8 +1,8 @@
 package client_works;
 
 import print_works.PrintKeeper;
-import server_validate.Answer;
-import server_validate.AnswerKeeper;
+import utility.Answer;
+import utility.AnswerKeeper;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

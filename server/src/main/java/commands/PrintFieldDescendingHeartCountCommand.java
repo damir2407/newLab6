@@ -2,8 +2,9 @@ package commands;
 
 import collection_works.CollectionKeeper;
 import messenger.Messenger;
-import server_validate.Result;
-import server_validate.ResultKeeper;
+import utility.Error;
+import utility.Result;
+import utility.Success;
 
 
 /**
@@ -27,13 +28,13 @@ public class PrintFieldDescendingHeartCountCommand implements ServerCommand {
      * @return Command exit status.
      */
     @Override
-    public ResultKeeper execute(Object... args) {
+    public Result<Object> execute(Object... args) {
         collectionManager.sortCollection();
 
         if (collectionManager.size() == 0) {
-            return new Result().error(messenger.collectionIsEmptyMessage());
+            return new Error(messenger.collectionIsEmptyMessage());
         }
-        return new Result().ok(collectionManager.getSortedHeartCounts());
+        return new Success<String>(collectionManager.getSortedHeartCounts());
 
     }
 }

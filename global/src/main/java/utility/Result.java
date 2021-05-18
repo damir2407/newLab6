@@ -1,7 +1,7 @@
-package server_validate;
+package utility;
 
-public class Result implements ResultKeeper {
-    public enum State {OK, ERROR}
+public interface Result<T> {
+/*    public enum State {OK, ERROR}
 
     private State state;
     private String errorMessage;
@@ -40,5 +40,5 @@ public class Result implements ResultKeeper {
     @Override
     public Object getObject() {
         return object;
-    }
+    }*/
 }

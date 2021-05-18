@@ -2,14 +2,15 @@ package execute_works;
 
 
 import request_structure.RequestKeeper;
-import server_validate.AnswerKeeper;
-import server_validate.ResultKeeper;
+import utility.AnswerKeeper;
+import utility.Result;
 
 import java.net.DatagramPacket;
 
 public interface ServerExecuteKeeper {
+
     AnswerKeeper giveAnswer(DatagramPacket datagramPacket);
 
-    ResultKeeper pickCommand(RequestKeeper request);
+    Result<Object> pickCommand(RequestKeeper request);
 
 }

@@ -2,8 +2,8 @@ package commands;
 
 import collection_works.CollectionKeeper;
 import messenger.Messenger;
-import server_validate.Result;
-import server_validate.ResultKeeper;
+import utility.Result;
+import utility.Success;
 
 import java.util.Date;
 
@@ -27,7 +27,7 @@ public class InfoCommand implements ServerCommand {
      * @return Command exit status.
      */
     @Override
-    public ResultKeeper execute(Object... args) {
+    public Result<Object> execute(Object... args) {
         String lastInitializationField;
         Date lastInitialization = collectionManager.getLastInitialization();
         if (lastInitialization == null) {
@@ -44,7 +44,7 @@ public class InfoCommand implements ServerCommand {
             lastSaveField = lastSave.toString();
         }
 
-        return new Result().ok(messenger.getCollectionInfo(collectionManager.getType(), collectionManager.size(), lastInitializationField, lastSaveField, collectionManager.getPath()));
+        return new Success<String>(messenger.getCollectionInfo(collectionManager.getType(), collectionManager.size(), lastInitializationField, lastSaveField, collectionManager.getPath()));
 
     }
 }

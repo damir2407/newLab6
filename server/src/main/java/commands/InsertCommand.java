@@ -3,8 +3,8 @@ package commands;
 import collection_works.CollectionKeeper;
 import data.SpaceMarine;
 import messenger.Messenger;
-import server_validate.Result;
-import server_validate.ResultKeeper;
+import utility.Result;
+import utility.Success;
 
 
 /**
@@ -29,11 +29,11 @@ public class InsertCommand implements ServerCommand {
      */
 
     @Override
-    public ResultKeeper execute(Object... args) {
+    public Result<Object> execute(Object... args) {
         SpaceMarine spaceMarine = (SpaceMarine) args[1];
         Integer key = (Integer) args[0];
         collectionManager.insertToCollection(key, spaceMarine);
-        return new Result().ok(messenger.successfullyAddMessage());
+        return new Success<String>(messenger.successfullyAddMessage());
 
     }
 }

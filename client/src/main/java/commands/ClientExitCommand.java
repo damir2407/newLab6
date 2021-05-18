@@ -1,8 +1,9 @@
 package commands;
 
 import messenger.Messenger;
-import server_validate.Result;
-import server_validate.ResultKeeper;
+import utility.Error;
+import utility.Result;
+import utility.Success;
 
 
 /**
@@ -23,10 +24,10 @@ public class ClientExitCommand implements ClientCommand {
      * @return Command exit status.
      */
     @Override
-    public ResultKeeper execute(String args) {
+    public Result<Object> execute(String args) {
         if (!args.isEmpty()) {
-            return new Result().error(messenger.argumentErrorMessage(name, false));
+            return new Error(messenger.argumentErrorMessage(name, false));
         }
-        return new Result().ok(messenger.successfullyExitMessage());
+        return new Success<String>(messenger.successfullyExitMessage());
     }
 }

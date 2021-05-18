@@ -5,8 +5,8 @@ import collection_works.CollectionManager;
 import com.google.gson.Gson;
 import file_works.*;
 import messenger.Messenger;
-import server_validate.ServerFieldsValidation;
-import server_validate.ServerValidator;
+import utility.ServerFieldsValidation;
+import utility.ServerValidator;
 import server_works.ServerSendKeeper;
 
 import java.net.InetAddress;

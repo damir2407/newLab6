@@ -2,8 +2,8 @@ package commands;
 
 
 import messenger.Messenger;
-import server_validate.Result;
-import server_validate.ResultKeeper;
+import utility.Result;
+import utility.Success;
 
 public class HelpCommand implements ServerCommand {
 
@@ -21,8 +21,8 @@ public class HelpCommand implements ServerCommand {
      * @return Command exit status.
      */
     @Override
-    public ResultKeeper execute(Object... args) {
-        return new Result().ok(messenger.getCommandsDescription());
+    public Result<Object> execute(Object... args) {
+        return new Success<String>(messenger.getCommandsDescription());
     }
 }
 
