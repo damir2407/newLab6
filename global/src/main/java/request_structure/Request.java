@@ -2,7 +2,7 @@ package request_structure;
 
 import java.io.Serializable;
 
-public class Request implements RequestKeeper, Serializable {
+public class Request implements RequestInterface, Serializable {
 
     public static final long serialVersionUID = 2407704212345L;
     private String command;

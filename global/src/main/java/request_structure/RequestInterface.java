@@ -1,6 +1,6 @@
 package request_structure;
 
-public interface RequestKeeper {
+public interface RequestInterface {
 
     String getCommand() ;
 

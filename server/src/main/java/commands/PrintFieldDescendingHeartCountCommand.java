@@ -1,6 +1,6 @@
 package commands;
 
-import collection_works.CollectionKeeper;
+import collection_works.CollectionManager;
 import messenger.Messenger;
 import utility.Error;
 import utility.Result;
@@ -12,11 +12,11 @@ import utility.Success;
  */
 public class PrintFieldDescendingHeartCountCommand implements ServerCommand {
 
-    private CollectionKeeper collectionManager;
+    private CollectionManager collectionManager;
     private final String name = "print_field_descending_heart_count";
     private Messenger messenger;
 
-    public PrintFieldDescendingHeartCountCommand(CollectionKeeper collectionManager, Messenger messenger) {
+    public PrintFieldDescendingHeartCountCommand(CollectionManager collectionManager, Messenger messenger) {
         this.collectionManager = collectionManager;
         this.messenger = messenger;
     }

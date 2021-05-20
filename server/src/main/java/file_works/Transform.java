@@ -7,28 +7,27 @@ import com.google.gson.reflect.TypeToken;
 import data.SpaceMarine;
 import messenger.Messenger;
 import utility.Answer;
+import utility.Error;
 import utility.Success;
-import server_works.ServerSendKeeper;
+import server_works.ServerSendInterface;
 
 import java.io.FileNotFoundException;
 import java.net.InetAddress;
 import java.util.*;
 
 public class Transform implements Transformer {
-    private FileKeeper fileManager;
+    private Loader fileManager;
     private Gson gson;
-    private FileCheckKeeper fileFieldsChecker;
+    private LoadCheck fileFieldsChecker;
     private Messenger messenger;
-    private ServerSendKeeper serverSender;
+    private ServerSendInterface serverSender;
     private InetAddress inetAddress;
     private int port;
 
-    public Transform(FileKeeper fileManager, Gson gson, FileCheckKeeper fileFieldsChecker,
-                     Messenger messenger, InetAddress inetAddress, int port, ServerSendKeeper serverSender) {
+    public Transform(Loader fileManager, Gson gson, LoadCheck fileFieldsChecker, InetAddress inetAddress, int port, ServerSendInterface serverSender) {
         this.fileManager = fileManager;
         this.fileFieldsChecker = fileFieldsChecker;
         this.gson = gson;
-        this.messenger = messenger;
         this.inetAddress = inetAddress;
         this.port = port;
         this.serverSender = serverSender;
@@ -42,10 +41,10 @@ public class Transform implements Transformer {
             }.getType());
             if (marines == null) throw new NoSuchElementException();
 
-            if (fileFieldsChecker.check(marines) instanceof Success)
+            if (fileFieldsChecker.check(marines) instanceof Success) {
                 serverSender.send(new Answer().ok(messenger.collectionSuccessfullyMessage()), inetAddress, port);
-            else if (fileFieldsChecker.check(marines) instanceof Error) {
-                serverSender.send(new Answer().error(((Error) fileFieldsChecker.check(marines)).getMessage()), inetAddress, port);
+            } else if (fileFieldsChecker.check(marines) instanceof Error) {
+                serverSender.send(new Answer().error(((Error) fileFieldsChecker.check(marines)).getErrorMessage()), inetAddress, port);
                 marines.clear();
             }
         } catch (JsonSyntaxException | NumberFormatException exception) {
@@ -62,5 +61,9 @@ public class Transform implements Transformer {
             return null;
         }
         return marines;
+    }
+
+    public void setMessenger(Messenger messenger) {
+        this.messenger = messenger;
     }
 }

@@ -3,7 +3,7 @@ package print_works;
 /**
  * interface for print messages
  */
-public interface PrintKeeper {
+public interface PrintInterface {
 
     void println(Object object);
 

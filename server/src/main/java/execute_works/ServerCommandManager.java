@@ -1,12 +1,12 @@
 package execute_works;
 
-import collection_works.CollectionKeeper;
+import collection_works.CollectionManager;
 import commands.*;
 import messenger.Messenger;
 
 import java.util.HashMap;
 
-public class ServerCommandManager implements ServerCommandKeeper {
+public class ServerCommandManager implements ServerCommandInterface {
 
 
     private HashMap<String, ServerCommand> allCommands = new HashMap<>();
@@ -23,12 +23,11 @@ public class ServerCommandManager implements ServerCommandKeeper {
     private ServerCommand groupCountingByCategoryCommand;
     private ServerCommand removeGreaterCommand;
     private ServerCommand replaceIfLoweCommand;
+    private CollectionManager collectionManager;
     private Messenger messenger;
-    private CollectionKeeper collectionManager;
 
-    public ServerCommandManager(CollectionKeeper collectionManager, Messenger messenger) {
+    public ServerCommandManager(CollectionManager collectionManager) {
         this.collectionManager = collectionManager;
-        this.messenger = messenger;
     }
 
     @Override
@@ -67,10 +66,17 @@ public class ServerCommandManager implements ServerCommandKeeper {
 
 
     @Override
+    public void setMessenger(Messenger messenger) {
+        this.messenger = messenger;
+    }
+
+    @Override
     public HashMap<String, ServerCommand> getAllCommands() {
         return allCommands;
     }
 
-
+    public void setCollectionManager(CollectionManager collectionManager) {
+        this.collectionManager = collectionManager;
+    }
 }
 

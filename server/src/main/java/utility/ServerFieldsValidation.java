@@ -18,8 +18,7 @@ import java.util.Map;
 public class ServerFieldsValidation implements ServerValidator {
     private Messenger messenger;
 
-
-    public ServerFieldsValidation(Messenger messenger) {
+    public void setMessenger(Messenger messenger) {
         this.messenger = messenger;
     }
 

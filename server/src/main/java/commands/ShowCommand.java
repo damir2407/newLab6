@@ -1,6 +1,6 @@
 package commands;
 
-import collection_works.CollectionKeeper;
+import collection_works.CollectionManager;
 import messenger.Messenger;
 import utility.Error;
 import utility.Result;
@@ -10,11 +10,11 @@ import utility.Success;
  * Command 'show'. Shows information about all elements of the collection.
  */
 public class ShowCommand implements ServerCommand {
-    private CollectionKeeper collectionManager;
+    private CollectionManager collectionManager;
     private final String name = "show";
     private Messenger messenger;
 
-    public ShowCommand(CollectionKeeper collectionManager, Messenger messenger) {
+    public ShowCommand(CollectionManager collectionManager, Messenger messenger) {
         this.collectionManager = collectionManager;
         this.messenger = messenger;
     }

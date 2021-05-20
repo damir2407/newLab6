@@ -1,6 +1,6 @@
 package input_fields_works;
 
-import ask_works.PollKeeper;
+import ask_works.PollInterface;
 import data.AstartesCategory;
 import data.Chapter;
 import data.Coordinates;
@@ -9,11 +9,11 @@ import data.SpaceMarine;
 
 import java.util.Date;
 
-public class MarineSetter implements SetKeeper {
+public class MarineSetter implements Setter {
 
-    private PollKeeper poll;
+    private PollInterface poll;
 
-    public MarineSetter(PollKeeper poll) {
+    public MarineSetter(PollInterface poll) {
         this.poll = poll;
     }
 

@@ -13,9 +13,9 @@ import java.util.Date;
  */
 public class ConsoleRepeater implements Repeater {
 
-    private SetKeeper marineSetter;
+    private Setter marineSetter;
 
-    public ConsoleRepeater(SetKeeper marineSetter) {
+    public ConsoleRepeater(Setter marineSetter) {
         this.marineSetter = marineSetter;
     }
 

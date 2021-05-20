@@ -1,7 +1,7 @@
 package file_works;
 
 import data.SpaceMarine;
-import messenger.Messenger;
+import utility.Error;
 import utility.Result;
 import utility.ServerValidator;
 import utility.Success;
@@ -11,14 +11,12 @@ import java.util.Map;
 /**
  * To check fields from file
  */
-public class FileFieldsChecker implements FileCheckKeeper {
+public class LoadFieldsChecker implements LoadCheck {
 
     private ServerValidator fieldsValidation;
-    private Messenger messenger;
 
-    public FileFieldsChecker(ServerValidator fieldsValidation, Messenger messenger) {
+    public LoadFieldsChecker(ServerValidator fieldsValidation) {
         this.fieldsValidation = fieldsValidation;
-        this.messenger = messenger;
     }
 
     /**
@@ -71,5 +69,9 @@ public class FileFieldsChecker implements FileCheckKeeper {
             }
         }
         return new Success<>(null);
+    }
+
+    public ServerValidator getFieldsValidation() {
+        return fieldsValidation;
     }
 }

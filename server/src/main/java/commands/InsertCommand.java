@@ -1,6 +1,6 @@
 package commands;
 
-import collection_works.CollectionKeeper;
+import collection_works.CollectionManager;
 import data.SpaceMarine;
 import messenger.Messenger;
 import utility.Result;
@@ -11,12 +11,12 @@ import utility.Success;
  * Command 'insert'. Adds a new element to collection.
  */
 public class InsertCommand implements ServerCommand {
-    private CollectionKeeper collectionManager;
+    private CollectionManager collectionManager;
     private final String name = "insert null {element}";
     private Messenger messenger;
 
 
-    public InsertCommand(CollectionKeeper collectionManager, Messenger messenger) {
+    public InsertCommand(CollectionManager collectionManager, Messenger messenger) {
         this.collectionManager = collectionManager;
         this.messenger = messenger;
     }

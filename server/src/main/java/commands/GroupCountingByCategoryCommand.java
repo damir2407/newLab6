@@ -1,6 +1,6 @@
 package commands;
 
-import collection_works.CollectionKeeper;
+import collection_works.CollectionManager;
 import messenger.Messenger;
 import utility.Error;
 import utility.Result;
@@ -11,11 +11,11 @@ import utility.Success;
  * by the value of the category field, display the number of elements in each group
  */
 public class GroupCountingByCategoryCommand implements ServerCommand {
-    private CollectionKeeper collectionManager;
+    private CollectionManager collectionManager;
     private final String name = "group_counting_by_category";
     private Messenger messenger;
 
-    public GroupCountingByCategoryCommand(CollectionKeeper collectionManager, Messenger messenger) {
+    public GroupCountingByCategoryCommand(CollectionManager collectionManager, Messenger messenger) {
         this.messenger = messenger;
         this.collectionManager = collectionManager;
     }

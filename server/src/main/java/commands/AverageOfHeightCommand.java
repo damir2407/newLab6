@@ -1,6 +1,6 @@
 package commands;
 
-import collection_works.CollectionKeeper;
+import collection_works.CollectionManager;
 import messenger.Messenger;
 import utility.Error;
 import utility.Result;
@@ -12,11 +12,11 @@ import utility.Success;
  * print the average value of the height field for all elements of the collection
  */
 public class AverageOfHeightCommand implements ServerCommand {
-    private CollectionKeeper collectionManager;
+    private CollectionManager collectionManager;
     private final String name = "average_of_height";
     private Messenger messenger;
 
-    public AverageOfHeightCommand(CollectionKeeper collectionManager, Messenger messenger) {
+    public AverageOfHeightCommand(CollectionManager collectionManager, Messenger messenger) {
         this.collectionManager = collectionManager;
         this.messenger = messenger;
     }

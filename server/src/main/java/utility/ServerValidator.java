@@ -3,6 +3,7 @@ package utility;
 import data.Chapter;
 import data.Coordinates;
 import data.SpaceMarine;
+import messenger.Messenger;
 
 import java.util.Date;
 import java.util.Map;
@@ -41,5 +42,6 @@ public interface ServerValidator {
 
     Result<Object> finalCheckChapter(Chapter chapter);
 
+     void setMessenger(Messenger messenger);
 
 }

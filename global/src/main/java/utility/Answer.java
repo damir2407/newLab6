@@ -2,7 +2,7 @@ package utility;
 
 import java.io.Serializable;
 
-public class Answer implements AnswerKeeper, Serializable {
+public class Answer implements AnswerInterface, Serializable {
 
     public enum State {OK, ERROR}
 
@@ -27,12 +27,12 @@ public class Answer implements AnswerKeeper, Serializable {
 
 
     @Override
-    public AnswerKeeper ok(Object object) {
+    public AnswerInterface ok(Object object) {
         return new Answer(State.OK, null, object);
     }
 
     @Override
-    public AnswerKeeper error(String errorMessage) {
+    public AnswerInterface error(String errorMessage) {
         return new Answer(State.ERROR, errorMessage, null);
     }
 

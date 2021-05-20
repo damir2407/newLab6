@@ -1,6 +1,6 @@
 package commands;
 
-import collection_works.CollectionKeeper;
+import collection_works.CollectionManager;
 import data.SpaceMarine;
 import messenger.Messenger;
 import utility.Error;
@@ -12,11 +12,11 @@ import utility.Success;
  * Command 'replace_if_lowe'. Replace element if lower
  */
 public class ReplaceIfLoweCommand implements ServerCommand {
-    private CollectionKeeper collectionManager;
+    private CollectionManager collectionManager;
     private final String name = "replace_if_lowe null {element}";
     private Messenger messenger;
 
-    public ReplaceIfLoweCommand(CollectionKeeper collectionManager, Messenger messenger) {
+    public ReplaceIfLoweCommand(CollectionManager collectionManager, Messenger messenger) {
         this.collectionManager = collectionManager;
         this.messenger = messenger;
     }

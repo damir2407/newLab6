@@ -1,7 +1,7 @@
 package commands;
 
 
-import collection_works.CollectionKeeper;
+import collection_works.CollectionManager;
 import messenger.Messenger;
 import utility.Error;
 import utility.Result;
@@ -12,11 +12,11 @@ import utility.Success;
  * Command 'remove_key'. Removes element by key.
  */
 public class RemoveKeyCommand implements ServerCommand {
-    private CollectionKeeper collectionManager;
+    private CollectionManager collectionManager;
     private final String name = "remove_key null";
     private Messenger messenger;
 
-    public RemoveKeyCommand(CollectionKeeper collectionManager, Messenger messenger) {
+    public RemoveKeyCommand(CollectionManager collectionManager, Messenger messenger) {
         this.collectionManager = collectionManager;
         this.messenger = messenger;
     }

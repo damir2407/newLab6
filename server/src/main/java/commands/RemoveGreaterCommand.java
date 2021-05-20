@@ -1,6 +1,6 @@
 package commands;
 
-import collection_works.CollectionKeeper;
+import collection_works.CollectionManager;
 import data.SpaceMarine;
 import messenger.Messenger;
 import utility.Error;
@@ -11,11 +11,11 @@ import utility.Success;
  * Command 'remove_greater'. Removes elements greater than user entered.
  */
 public class RemoveGreaterCommand implements ServerCommand {
-    private CollectionKeeper collectionManager;
+    private CollectionManager collectionManager;
     private final String name = "remove_greater {element}";
     private Messenger messenger;
 
-    public RemoveGreaterCommand(CollectionKeeper collectionManager, Messenger messenger) {
+    public RemoveGreaterCommand(CollectionManager collectionManager, Messenger messenger) {
         this.collectionManager = collectionManager;
         this.messenger = messenger;
     }

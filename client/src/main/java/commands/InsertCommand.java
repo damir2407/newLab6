@@ -3,25 +3,25 @@ package commands;
 import data.SpaceMarine;
 import input_fields_works.Repeater;
 import messenger.Messenger;
-import print_works.PrintKeeper;
+import print_works.PrintInterface;
 import request_structure.Request;
-import request_structure.RequestKeeper;
+import request_structure.RequestInterface;
 
 public class InsertCommand implements AskCommand {
     private Messenger messenger;
-    private PrintKeeper printKeeper;
+    private PrintInterface printInterface;
     private Repeater repeater;
 
-    public InsertCommand(Messenger messenger, PrintKeeper printKeeper, Repeater repeater) {
+    public InsertCommand(Messenger messenger, PrintInterface printInterface, Repeater repeater) {
         this.messenger = messenger;
-        this.printKeeper = printKeeper;
+        this.printInterface = printInterface;
         this.repeater = repeater;
     }
 
     @Override
-    public RequestKeeper prepare(String argument) {
+    public RequestInterface prepare(String argument) {
         if (argument.isEmpty()) {
-            printKeeper.println(messenger.argumentErrorMessage("insert", true));
+            printInterface.println(messenger.argumentErrorMessage("insert", true));
             return null;
         }
 

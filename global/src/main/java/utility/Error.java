@@ -1,6 +1,6 @@
 package utility;
 
-public class Error<String> implements Result {
+public class Error implements Result {
     private String errorMessage;
 
     public Error(String errorMessage) {

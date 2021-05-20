@@ -3,7 +3,7 @@ package server_works;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import utility.Answer;
-import utility.AnswerKeeper;
+import utility.AnswerInterface;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -12,17 +12,17 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
-public class ServerSender implements ServerSendKeeper {
+public class ServerSender implements ServerSendInterface {
     private final static int HIGH_CONST = 6000;
     private DatagramSocket datagramSocket;
-    private static final Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger(ServerSender.class);
 
     public ServerSender(DatagramSocket datagramSocket) {
         this.datagramSocket = datagramSocket;
     }
 
     @Override
-    public void send(AnswerKeeper answer, InetAddress address, int port) {
+    public void send(AnswerInterface answer, InetAddress address, int port) {
         try {
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
@@ -53,13 +53,13 @@ public class ServerSender implements ServerSendKeeper {
             byteArrayOutputStream.close();
 
         } catch (IOException e) {
-            logger.error("Ошибка!");
+            logger.error("Ошибка!",e);
         }
     }
 
-    public void sendInParts(AnswerKeeper answer, InetAddress inetAddress, int port) {
+    public void sendInParts(AnswerInterface answer, InetAddress inetAddress, int port) {
         int numberOfResponses = answer.toString().getBytes().length / HIGH_CONST;
-        AnswerKeeper answerToSend;
+        AnswerInterface answerToSend;
         for (int i = 1; i <= numberOfResponses; i++) {
             if (i == 1) {
                 answerToSend = new Answer(String.valueOf(answer.getObject()).substring(1, HIGH_CONST));

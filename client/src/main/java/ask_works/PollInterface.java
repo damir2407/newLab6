@@ -7,7 +7,7 @@ import java.util.Scanner;
 /**
  * interface for Poll class to ask fields
  */
-public interface PollKeeper {
+public interface PollInterface {
 
 
     String claimName();

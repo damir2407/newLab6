@@ -2,9 +2,9 @@ package ask_works;
 
 
 import messenger.Messenger;
-import print_works.PrintKeeper;
+import print_works.PrintInterface;
 import request_structure.Request;
-import request_structure.RequestKeeper;
+import request_structure.RequestInterface;
 
 import java.util.*;
 
@@ -15,11 +15,11 @@ public class LanguageKeeper {
     private Messenger russianMessenger;
     private Messenger englishMessenger;
     private Map<String, Messenger> mapOfLanguages = new HashMap<>();
-    private PrintKeeper printMachine;
+    private PrintInterface printMachine;
     private Messenger chosenMessenger;
 
 
-    public LanguageKeeper(Messenger russianMessenger, Messenger englishMessenger, PrintKeeper printMachine) {
+    public LanguageKeeper(Messenger russianMessenger, Messenger englishMessenger, PrintInterface printMachine) {
         this.englishMessenger = englishMessenger;
         this.russianMessenger = russianMessenger;
         this.printMachine = printMachine;
@@ -36,7 +36,7 @@ public class LanguageKeeper {
     /**
      * @return messenger to work with
      */
-    public RequestKeeper inputLanguage() {
+    public RequestInterface inputLanguage() {
         String language;
         try {
             Scanner scanner = new Scanner(System.in);
@@ -49,7 +49,7 @@ public class LanguageKeeper {
                         printMachine.println("Данный язык не поддерживается / не существует\nThis language is not supported / does not exist");
                     } else {
                         setChosenMessenger(mapOfLanguages.get(language));
-                        return new Request(language, null);
+                        return new Request("language", language);
                     }
                 }
 

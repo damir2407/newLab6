@@ -1,11 +1,12 @@
 package command_works;
 
-import ask_works.PollKeeper;
-import client_works.ClientSendKeeper;
+import ask_works.PollInterface;
+import client_works.ClientSendInterface;
 import messenger.Messenger;
-import print_works.PrintKeeper;
+import print_works.PrintInterface;
 import request_structure.Request;
-import request_structure.RequestKeeper;
+import request_structure.RequestInterface;
+import utility.Error;
 import utility.Result;
 import utility.Success;
 
@@ -13,17 +14,17 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-public class ClientExecutor implements ClientExecuteKeeper {
+public class ClientExecutor implements ClientExecuteInterface {
 
-    private ClientCommandKeeper clientCommandManager;
-    private PollKeeper poll;
+    private ClientCommandInterface clientCommandManager;
+    private PollInterface poll;
     private Messenger messenger;
-    private PrintKeeper printMachine;
-    private ClientSendKeeper clientSender;
+    private PrintInterface printMachine;
+    private ClientSendInterface clientSender;
 
 
-    public ClientExecutor(ClientCommandKeeper clientCommandManager, PollKeeper poll, Messenger messenger, PrintKeeper printMachine,
-                          ClientSendKeeper clientSender) {
+    public ClientExecutor(ClientCommandInterface clientCommandManager, PollInterface poll, Messenger messenger, PrintInterface printMachine,
+                          ClientSendInterface clientSender) {
         this.clientCommandManager = clientCommandManager;
         this.poll = poll;
         this.messenger = messenger;
@@ -44,14 +45,14 @@ public class ClientExecutor implements ClientExecuteKeeper {
             if (clientCommandManager.getClientCommands().containsKey(userCommand[0].trim()) && userCommand[0].trim().equals("execute_script")) {
                 Result<Object> result = (clientCommandManager.getClientCommands().get(userCommand[0]).execute(userCommand[1]));
                 if (result instanceof Error)
-                    printMachine.println(((Error) result).getMessage());
+                    printMachine.println(((Error) result).getErrorMessage());
                 else {
                     scriptMode(userCommand[1]);
                 }
             } else if (clientCommandManager.getClientCommands().containsKey(userCommand[0].trim())) {
                 Result<Object> result = (clientCommandManager.getClientCommands().get(userCommand[0]).execute(userCommand[1]));
                 if (result instanceof Error) {
-                    printMachine.println(((Error) result).getMessage());
+                    printMachine.println(((Error) result).getErrorMessage());
                 }
                 if (result instanceof Success) {
                     printMachine.println(((Success<?>) result).getObject());
@@ -59,12 +60,12 @@ public class ClientExecutor implements ClientExecuteKeeper {
                 //проверка на сервернуюкоманду
             } else if (clientCommandManager.getAvailableCommands().containsKey(userCommand[0])) {
                 if (clientCommandManager.getAvailableCommands().get(userCommand[0]).equals(userCommand[1].isEmpty())) {
-                    RequestKeeper request = new Request(userCommand[0], userCommand[1]);
+                    RequestInterface request = new Request(userCommand[0], userCommand[1]);
                     clientSender.send(request);
                 } else
                     printMachine.println(messenger.argumentErrorMessage(userCommand[0], !clientCommandManager.getAvailableCommands().get(userCommand[0])));
             } else if (clientCommandManager.getAskCommands().containsKey(userCommand[0])) {
-                RequestKeeper request = (clientCommandManager.getAskCommands().get(userCommand[0]).prepare(userCommand[1]));
+                RequestInterface request = (clientCommandManager.getAskCommands().get(userCommand[0]).prepare(userCommand[1]));
                 if (request != null) clientSender.send(request);
             } else printMachine.println(messenger.commandNotFoundMessage(userCommand[0], userCommand[1]));
         } catch (NumberFormatException e) {

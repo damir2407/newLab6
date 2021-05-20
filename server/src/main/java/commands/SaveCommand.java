@@ -1,16 +1,16 @@
 package commands;
 
-import collection_works.CollectionKeeper;
+import collection_works.CollectionManager;
 import utility.Result;
 
 /**
  * Command 'save'. Saves the collection to a file.
  */
 public class SaveCommand implements ServerCommand {
-    private CollectionKeeper collectionManager;
+    private CollectionManager collectionManager;
     private final String name = "save";
 
-    public SaveCommand(CollectionKeeper collectionManager) {
+    public SaveCommand(CollectionManager collectionManager) {
         this.collectionManager = collectionManager;
     }
 

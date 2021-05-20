@@ -6,7 +6,7 @@ import data.SpaceMarine;
 
 import java.util.Date;
 
-public interface SetKeeper {
+public interface Setter {
 
     boolean setFieldName(SpaceMarine spaceMarine);
 

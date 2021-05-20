@@ -2,7 +2,6 @@ package file_works;
 
 import com.google.gson.Gson;
 import data.*;
-import messenger.Messenger;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -12,18 +11,14 @@ import java.util.*;
 /**
  * Operates the file for saving/loading collection.
  */
-public class FileManager implements FileKeeper {
+public class FileManager implements Loader {
 
     private Gson gson = new Gson();
     private String path;
 
-    private static final Logger logger = LogManager.getLogger();
-    private Messenger messenger;
+    private static final Logger logger = LogManager.getLogger(FileManager.class);
 
-    public FileManager(String path, Messenger messenger) {
-        this.path = path;
-        this.messenger = messenger;
-    }
+
 
     public FileManager(String path) {
         this.path = path;
@@ -52,11 +47,10 @@ public class FileManager implements FileKeeper {
     public void writeCollection(Map<Integer, SpaceMarine> collection) {
         try (FileOutputStream collectionFileWriter = new FileOutputStream(new File(path))) {
             collectionFileWriter.write(gson.toJson(collection).getBytes());
-            logger.error(messenger.successfullySave());
         } catch (FileNotFoundException | NullPointerException e) {
-            logger.error(messenger.canNotSaveFile());
+            logger.error("Ошибка при сохранении", e);
         } catch (IOException e) {
-            logger.error(messenger.inputOutputMessage());
+            logger.error("Ошибка при сохранении", e);
         }
     }
 

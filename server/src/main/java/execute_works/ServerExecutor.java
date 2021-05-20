@@ -1,13 +1,13 @@
 package execute_works;
 
 import commands.LanguageManager;
-import messenger.Messenger;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import request_structure.Request;
-import request_structure.RequestKeeper;
+import request_structure.RequestInterface;
+import server_works.Server;
+import server_works.ServerSendInterface;
 import utility.*;
-import server_works.ServerSendKeeper;
 import utility.Error;
 
 import java.io.ByteArrayInputStream;
@@ -15,70 +15,59 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.DatagramPacket;
 
-public class ServerExecutor implements ServerExecuteKeeper {
-    private ServerCommandKeeper serverCommandManager;
+public class ServerExecutor implements ServerExecuteInterface {
+    private ServerCommandInterface serverCommandManager;
     private LanguageManager languageManager;
-    private boolean isLanguage = true;
     private DatagramPacket datagramPacket;
-    private ServerSendKeeper serverSender;
-    private ServerReadKeeper serverReader;
-    private static final Logger logger = LogManager.getLogger();
+    private ServerSendInterface serverSender;
+    private ServerReadInterface serverReader;
+    private Server server;
+    private static final Logger logger = LogManager.getLogger(ServerExecutor.class);
 
-    public ServerExecutor(ServerCommandKeeper serverCommandManager) {
-        this.serverCommandManager = serverCommandManager;
-    }
 
-    public ServerExecutor(LanguageManager languageManager, ServerSendKeeper serverSender, ServerReadKeeper serverReader) {
+    public ServerExecutor(LanguageManager languageManager, ServerSendInterface serverSender, ServerReadInterface serverReader, ServerCommandInterface serverCommandManager, Server server) {
         this.languageManager = languageManager;
         this.serverSender = serverSender;
         this.serverReader = serverReader;
+        this.serverCommandManager = serverCommandManager;
+        this.server = server;
     }
 
-    public ServerExecutor() {
-    }
 
     @Override
-    public AnswerKeeper giveAnswer(DatagramPacket datagramPacket) {
+    public AnswerInterface giveAnswer(DatagramPacket datagramPacket) {
         try {
             this.datagramPacket = datagramPacket;
             ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(datagramPacket.getData());
             ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
 
-            RequestKeeper request = (Request) objectInputStream.readObject();
+            RequestInterface request = (Request) objectInputStream.readObject();
 
 
-            try {
-                if (isLanguage) {
-                    if (languageManager.getMapOfLanguages().containsKey(request.getCommand())) {
-                        return new Answer().ok(pickLanguage(languageManager.getMapOfLanguages().get(request.getCommand())));
-                    }
+            if (!request.getCommand().equals("language")) {
+                Result<Object> result = pickCommand(request);
+                if (result instanceof Error) {
+                    return new Answer().error(((Error) result).getErrorMessage());
                 }
-            } catch (NullPointerException e) {
-                isLanguage = false;
-            }
-
-
-            Result<Object> result = pickCommand(request);
-            if (result instanceof utility.Error) {
-                return new Answer().error(((Error<String>) result).getErrorMessage());
-            }
-            if (result instanceof Success) {
-                return new Answer().ok(((Success<?>) result).getObject());
-            }
+                if (result instanceof Success) {
+                    return new Answer().ok(((Success<?>) result).getObject());
+                }
+            } else return null;
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+            logger.error("Произошла ошибка", e);
         }
         return null;
     }
 
     @Override
-    public Result<Object> pickCommand(RequestKeeper request) {
-        Result<Object> result = (serverCommandManager.getAllCommands().get(request.getCommand()).execute(request.getArgs()));
+    public Result<Object> pickCommand(RequestInterface request) {
+        Result<Object> result = (server.getServerCommandManager().getAllCommands().get(request.getCommand()).execute(request.getArgs()));
         return result;
     }
 
-    public ServerExecuteKeeper pickLanguage(Messenger messenger) {
-        CreateKeeper creator = new Creator(messenger);
-        return creator.createObjects(datagramPacket.getAddress(), datagramPacket.getPort(), serverSender, serverReader);
+
+    @Override
+    public void setServerCommandManager(ServerCommandInterface serverCommandManager) {
+        this.serverCommandManager = serverCommandManager;
     }
 }

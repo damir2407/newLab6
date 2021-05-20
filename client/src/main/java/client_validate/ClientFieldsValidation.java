@@ -1,7 +1,7 @@
 package client_validate;
 
 
-import data.AstartesCategory;
+import  data.AstartesCategory;
 import messenger.Messenger;
 import utility.Error;
 import utility.Result;

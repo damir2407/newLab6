@@ -1,6 +1,6 @@
 package execute_works;
 
-import collection_works.CollectionKeeper;
+import collection_works.CollectionManager;
 import commands.SaveCommand;
 import commands.ServerCommand;
 import org.apache.logging.log4j.LogManager;
@@ -8,9 +8,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Scanner;
 
-public class ServerReader implements ServerReadKeeper {
-    private CollectionKeeper collectionManager;
-    private static final Logger logger = LogManager.getLogger();
+public class ServerReader implements ServerReadInterface {
+    private CollectionManager collectionManager;
+    private static final Logger logger = LogManager.getLogger(ServerReader.class);
 
     public ServerReader() {
     }
@@ -32,7 +32,7 @@ public class ServerReader implements ServerReadKeeper {
         }
     }
 
-    public void setCollectionManager(CollectionKeeper collectionManager) {
+    public void setCollectionManager(CollectionManager collectionManager) {
         this.collectionManager = collectionManager;
     }
 }

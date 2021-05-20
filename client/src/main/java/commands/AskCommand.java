@@ -1,8 +1,8 @@
 package commands;
 
-import request_structure.RequestKeeper;
+import request_structure.RequestInterface;
 
 public interface AskCommand {
 
-    RequestKeeper prepare(String argument);
+    RequestInterface prepare(String argument);
 }

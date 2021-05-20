@@ -5,7 +5,7 @@ import commands.*;
 
 import input_fields_works.Repeater;
 import messenger.Messenger;
-import print_works.PrintKeeper;
+import print_works.PrintInterface;
 
 
 import java.util.HashMap;
@@ -15,7 +15,7 @@ import java.util.HashMap;
  * Class for working with our commands.
  */
 
-public class ClientCommandManager implements ClientCommandKeeper {
+public class ClientCommandManager implements ClientCommandInterface {
     private HashMap<String, ClientCommand> clientCommands = new HashMap<>();
     private HashMap<String, Boolean> availableCommands = new HashMap<>();
     private HashMap<String, AskCommand> askCommands = new HashMap<>();
@@ -26,12 +26,12 @@ public class ClientCommandManager implements ClientCommandKeeper {
     private AskCommand removeGreaterCommand;
     private AskCommand replaceIfLoweCommand;
     private Messenger messenger;
-    private PrintKeeper printKeeper;
+    private PrintInterface printInterface;
     private Repeater repeater;
 
-    public ClientCommandManager(Messenger messenger, PrintKeeper printKeeper, Repeater repeater) {
+    public ClientCommandManager(Messenger messenger, PrintInterface printInterface, Repeater repeater) {
         this.messenger = messenger;
-        this.printKeeper = printKeeper;
+        this.printInterface = printInterface;
         this.repeater = repeater;
 
     }
@@ -40,10 +40,10 @@ public class ClientCommandManager implements ClientCommandKeeper {
     public void pushCommands() {
         this.exitCommand = new ClientExitCommand(messenger);
         this.executeScriptCommand = new ExecuteScriptCommand(messenger);
-        this.insertCommand = new InsertCommand(messenger, printKeeper, repeater);
-        this.updateCommand = new UpdateCommand(messenger, printKeeper, repeater);
-        this.removeGreaterCommand = new RemoveGreaterCommand(messenger, printKeeper, repeater);
-        this.replaceIfLoweCommand = new ReplaceIfLoweCommand(messenger, printKeeper, repeater);
+        this.insertCommand = new InsertCommand(messenger, printInterface, repeater);
+        this.updateCommand = new UpdateCommand(messenger, printInterface, repeater);
+        this.removeGreaterCommand = new RemoveGreaterCommand(messenger, printInterface, repeater);
+        this.replaceIfLoweCommand = new ReplaceIfLoweCommand(messenger, printInterface, repeater);
     }
 
 

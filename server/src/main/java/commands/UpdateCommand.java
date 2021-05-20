@@ -1,6 +1,6 @@
 package commands;
 
-import collection_works.CollectionKeeper;
+import collection_works.CollectionManager;
 import data.SpaceMarine;
 import messenger.Messenger;
 import utility.Error;
@@ -12,11 +12,11 @@ import utility.Success;
  * Command 'update'. Updates the information about selected marine.
  */
 public class UpdateCommand implements ServerCommand {
-    private CollectionKeeper collectionManager;
+    private CollectionManager collectionManager;
     private final String name = "update id {element}";
     private Messenger messenger;
 
-    public UpdateCommand(CollectionKeeper collectionManager, Messenger messenger) {
+    public UpdateCommand(CollectionManager collectionManager, Messenger messenger) {
         this.collectionManager = collectionManager;
         this.messenger = messenger;
 

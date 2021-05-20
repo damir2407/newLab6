@@ -1,6 +1,6 @@
 package commands;
 
-import collection_works.CollectionKeeper;
+import collection_works.CollectionManager;
 import messenger.Messenger;
 import utility.Result;
 import utility.Success;
@@ -11,11 +11,11 @@ import java.util.Date;
  * Command 'info'. Prints information about the collection.
  */
 public class InfoCommand implements ServerCommand {
-    private CollectionKeeper collectionManager;
+    private CollectionManager collectionManager;
     private final String name = "info";
     private Messenger messenger;
 
-    public InfoCommand(CollectionKeeper collectionManager, Messenger messenger) {
+    public InfoCommand(CollectionManager collectionManager, Messenger messenger) {
         this.collectionManager = collectionManager;
         this.messenger = messenger;
     }

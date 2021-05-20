@@ -1,6 +1,6 @@
 package print_works;
 
-public class PrintMachine implements PrintKeeper {
+public class PrintMachine implements PrintInterface {
 
 
     @Override

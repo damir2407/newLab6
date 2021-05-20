@@ -11,7 +11,7 @@ import java.util.NavigableMap;
 /**
  * interface for FileManager
  */
-public interface FileKeeper {
+public interface Loader {
 
     String load() throws FileNotFoundException, SecurityException;
 

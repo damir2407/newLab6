@@ -2,18 +2,18 @@ package client_works;
 
 import ask_works.LanguageKeeper;
 import ask_works.Poll;
-import ask_works.PollKeeper;
+import ask_works.PollInterface;
 import client_validate.ClientFieldsValidation;
 import client_validate.ClientValidator;
 import command_works.*;
 import input_fields_works.ConsoleRepeater;
 import input_fields_works.MarineSetter;
 import input_fields_works.Repeater;
-import input_fields_works.SetKeeper;
+import input_fields_works.Setter;
 import messenger.*;
-import print_works.PrintKeeper;
+import print_works.PrintInterface;
 import print_works.PrintMachine;
-import request_structure.RequestKeeper;
+import request_structure.RequestInterface;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -37,14 +37,15 @@ public class Client {
         try {
             this.datagramChannel = DatagramChannel.open();
             this.socketAddress = new InetSocketAddress("localhost", SERVER_PORT);
-            PrintKeeper printMachine = new PrintMachine();
-            ClientSendKeeper clientSender = new ClientSender(datagramChannel, socketAddress, printMachine);
+            PrintInterface printMachine = new PrintMachine();
+            ClientSendInterface clientSender = new ClientSender(datagramChannel, socketAddress, printMachine);
+
             ClientReceiver clientReceiver = new ClientReceiver(datagramChannel, socketAddress, printMachine);
 
             LanguageKeeper languageKeeper = new LanguageKeeper(new RussianMessenger(), new EnglishMessenger(), printMachine);
 
             languageKeeper.putLanguage();
-            RequestKeeper languageRequest = languageKeeper.inputLanguage();
+            RequestInterface languageRequest = languageKeeper.inputLanguage();
 
 
             clientSender.send(languageRequest);
@@ -53,15 +54,15 @@ public class Client {
 
             Scanner scanner = new Scanner(System.in);
 
-            ClientReadKeeper clientReadKeeper = new ClientReader(scanner);
+            ClientReadInterface clientReadInterface = new ClientReader(scanner);
 
             ClientValidator clientValidator = new ClientFieldsValidation(messenger);
 
-            PollKeeper poll = new Poll(scanner, clientValidator, messenger, printMachine);
+            PollInterface poll = new Poll(scanner, clientValidator, messenger, printMachine);
 
-            SetKeeper marineSetter = new MarineSetter(poll);
+            Setter marineSetter = new MarineSetter(poll);
             Repeater repeater = new ConsoleRepeater(marineSetter);
-            ClientCommandKeeper clientCommandManager = new ClientCommandManager(messenger, printMachine, repeater);
+            ClientCommandInterface clientCommandManager = new ClientCommandManager(messenger, printMachine, repeater);
 
             clientCommandManager.pushCommands();
 
@@ -71,14 +72,14 @@ public class Client {
 
             clientCommandManager.mapOfAskCommands();
 
-            ClientExecuteKeeper clientExecuteKeeper = new ClientExecutor(clientCommandManager, poll, messenger, printMachine, clientSender);
+            ClientExecuteInterface clientExecuteInterface = new ClientExecutor(clientCommandManager, poll, messenger, printMachine, clientSender);
 
             clientReceiver.start();
-            clientReadKeeper.interactiveMode(clientExecuteKeeper);
+            clientReadInterface.interactiveMode(clientExecuteInterface);
 
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Ошибка!");
         }
 
     }

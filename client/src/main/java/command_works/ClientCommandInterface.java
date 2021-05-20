@@ -3,9 +3,6 @@ package command_works;
 
 import commands.AskCommand;
 import commands.ClientCommand;
-import input_fields_works.Repeater;
-import messenger.Messenger;
-import print_works.PrintKeeper;
 
 import java.util.HashMap;
 
@@ -13,7 +10,7 @@ import java.util.HashMap;
  * interface for command manager
  */
 
-public interface ClientCommandKeeper {
+public interface ClientCommandInterface {
 
 
     HashMap<String, ClientCommand> getClientCommands();
